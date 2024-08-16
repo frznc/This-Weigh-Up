@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmjf8"]
 size = Vector2(60, 60)
 
-[node name="player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_tj0eu")
 
