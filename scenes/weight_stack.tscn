@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://vuoix1uxx63"]
 
-[ext_resource type="Script" path="res://weight_stack.gd" id="1_jhdfp"]
+[ext_resource type="Script" path="res://scripts/weight_stack.gd" id="1_jhdfp"]
 [ext_resource type="SpriteFrames" uid="uid://chthrt50ci2b0" path="res://textures/weight_spriteframes.tres" id="2_sgvsk"]
 
 [node name="weight_stack" type="Node2D"]
