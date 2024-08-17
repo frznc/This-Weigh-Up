@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://wjseg178c4rq"]
+[gd_scene load_steps=17 format=3 uid="uid://wjseg178c4rq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tj0eu"]
 [ext_resource type="Texture2D" uid="uid://cn76kf8yhp2k1" path="res://textures/jetguy.png" id="2_keqxy"]
 [ext_resource type="Theme" uid="uid://da6ednpdx62ww" path="res://text.tres" id="3_vtwbp"]
 [ext_resource type="PackedScene" uid="uid://yuw15pr1pj53" path="res://scenes/pause.tscn" id="4_i1m2f"]
+[ext_resource type="PackedScene" uid="uid://c8mqhigxgnk8s" path="res://scenes/ui.tscn" id="5_olsrx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sf58a"]
 atlas = ExtResource("2_keqxy")
@@ -65,6 +66,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnrpn"]
 size = Vector2(6, 6)
 
+[sub_resource type="Curve" id="Curve_53uy4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.904494, 0), -0.0489008, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ln64w"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 2
@@ -119,9 +127,33 @@ theme = ExtResource("3_vtwbp")
 layout_mode = 2
 theme = ExtResource("3_vtwbp")
 
+[node name="UI" parent="camera" instance=ExtResource("5_olsrx")]
+
 [node name="Pause" parent="camera" instance=ExtResource("4_i1m2f")]
 z_index = 1000
 offset_left = -133.0
 offset_top = -135.0
 offset_right = 131.0
 offset_bottom = 96.0
+
+[node name="Crushed Particles" type="CPUParticles2D" parent="."]
+z_index = 500
+z_as_relative = false
+position = Vector2(1, 5)
+emitting = false
+amount = 10
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(4, 1)
+spread = 180.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+angular_velocity_min = 90.0
+angular_velocity_max = 450.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_53uy4")
+color_ramp = SubResource("Gradient_ln64w")

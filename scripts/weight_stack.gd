@@ -22,12 +22,12 @@ func _process(delta: float) -> void:
 	global_position += current_offset
 	
 	# Offset a pixel based on movement direction
-	if Input.is_action_just_pressed("right"):
+	if Input.is_action_just_pressed("right") and Global.weight <= 20:
 		current_offset = Vector2(-0.2,0)
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_just_pressed("left") and Global.weight <= 20:
 		current_offset = Vector2(0.2,0)
 	
 		
 	# set above player position, lerp, idk a lot of bull Shit
-	global_position = global_position.lerp(player.global_position+Vector2(1,2)+Vector2(0,id*-8),delta * 30 / id)
+	global_position = global_position.lerp(player.global_position+Vector2(1, 2)+Vector2(0, id * -8)+Vector2(0, Global.heaviness),delta * 30 / id)
 	
