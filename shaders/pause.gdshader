@@ -8,8 +8,3 @@ void fragment() {
 	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur);
 	COLOR.rgb *= brightness;
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}

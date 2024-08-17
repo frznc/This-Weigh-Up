@@ -17,23 +17,20 @@ tile_set = ExtResource("2_ikh7j")
 
 [node name="weight2" parent="." instance=ExtResource("3_svj6x")]
 position = Vector2(-20, -4)
+weight_value = -1
 
 [node name="weight3" parent="." instance=ExtResource("3_svj6x")]
-position = Vector2(-28, -4)
+position = Vector2(-2, -17)
 weight_value = -4
 
 [node name="weight4" parent="." instance=ExtResource("3_svj6x")]
-position = Vector2(-20, -28)
-weight_value = 2
+position = Vector2(4, -4)
+weight_value = -3
 
 [node name="weight5" parent="." instance=ExtResource("3_svj6x")]
-position = Vector2(-20, -16)
+position = Vector2(-10, -5)
 weight_value = 3
 
 [node name="weight6" parent="." instance=ExtResource("3_svj6x")]
-position = Vector2(4, -4)
-weight_value = 4
-
-[node name="weight7" parent="." instance=ExtResource("3_svj6x")]
-position = Vector2(-8, -4)
-weight_value = 5
+position = Vector2(-36, -3)
+weight_value = 7
