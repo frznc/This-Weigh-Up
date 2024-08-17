@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://wjseg178c4rq"]
+[gd_scene load_steps=13 format=3 uid="uid://wjseg178c4rq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tj0eu"]
 [ext_resource type="Texture2D" uid="uid://cn76kf8yhp2k1" path="res://textures/jetguy.png" id="2_keqxy"]
+[ext_resource type="Theme" uid="uid://da6ednpdx62ww" path="res://text.tres" id="3_vtwbp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sf58a"]
 atlas = ExtResource("2_keqxy")
@@ -60,12 +61,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmjf8"]
-size = Vector2(6, 7.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnrpn"]
+size = Vector2(6, 6)
 
 [node name="player" type="CharacterBody2D"]
 z_index = 1
-scale = Vector2(1.25, 1.25)
 collision_layer = 2
 script = ExtResource("1_tj0eu")
 
@@ -73,14 +73,15 @@ script = ExtResource("1_tj0eu")
 sprite_frames = SubResource("SpriteFrames_gqwo0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.76)
-shape = SubResource("RectangleShape2D_wmjf8")
+position = Vector2(1, 2)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_pnrpn")
 
 [node name="camera" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
-position_smoothing_enabled = true
+top_level = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="camera"]
+visible = false
 
 [node name="Control" type="Control" parent="camera/CanvasLayer"]
 texture_filter = 1
@@ -98,16 +99,21 @@ offset_bottom = 40.0
 
 [node name="held weights" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_vtwbp")
 
 [node name="weight" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_vtwbp")
 
 [node name="--" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_vtwbp")
 text = "--"
 
 [node name="speed" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_vtwbp")
 
 [node name="jump vel" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_vtwbp")
