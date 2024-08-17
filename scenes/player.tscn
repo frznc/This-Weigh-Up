@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://wjseg178c4rq"]
+[gd_scene load_steps=14 format=3 uid="uid://wjseg178c4rq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tj0eu"]
 [ext_resource type="Texture2D" uid="uid://cn76kf8yhp2k1" path="res://textures/jetguy.png" id="2_keqxy"]
 [ext_resource type="Theme" uid="uid://da6ednpdx62ww" path="res://text.tres" id="3_vtwbp"]
+[ext_resource type="PackedScene" uid="uid://yuw15pr1pj53" path="res://scenes/pause.tscn" id="4_i1m2f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sf58a"]
 atlas = ExtResource("2_keqxy")
@@ -117,3 +118,10 @@ theme = ExtResource("3_vtwbp")
 [node name="jump vel" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_vtwbp")
+
+[node name="Pause" parent="camera" instance=ExtResource("4_i1m2f")]
+z_index = 1000
+offset_left = -133.0
+offset_top = -135.0
+offset_right = 131.0
+offset_bottom = 96.0
