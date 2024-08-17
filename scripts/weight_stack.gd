@@ -9,7 +9,10 @@ var current_offset = Vector2(0,0)
 @onready var player = get_tree().current_scene.get_node("player")
 
 func _ready() -> void:
-	$sprite.frame = int(weight_value)
+	if (weight_value < 0):
+		$sprite.frame = abs(weight_value) + 10
+	else:
+		$sprite.frame = weight_value
 	global_position = player.global_position
 	z_index = id
 

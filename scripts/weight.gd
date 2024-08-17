@@ -8,8 +8,9 @@ var player_inside = false
 func _ready() -> void:
 	# Value is negative, change it to the correct frame
 	if (weight_value < 0):
-		weight_value = abs(weight_value) + 10
-	$sprite.frame = int(weight_value)
+		$sprite.frame = abs(weight_value) + 10
+	else:
+		$sprite.frame = weight_value
 
 
 func _physics_process(delta: float) -> void:

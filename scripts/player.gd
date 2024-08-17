@@ -73,9 +73,6 @@ func update_weight(): # Update current player weight based on the 'inventory'
 	jump_velocity = DEF_JUMP_VELOCITY
 	speed = DEF_SPEED
 	for x : int in Global.held_weights:
-		# For negative weights: convert frame number back to weight value
-		if x > 9:
-			x = (x - 10) * -1
 		weight += x
 	jump_velocity += (weight *  weight_mult)
 	speed -= (weight * weight_mult)
