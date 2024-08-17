@@ -36,8 +36,7 @@ func _physics_process(delta: float) -> void:
 		get_parent().add_child(instance) # Add weight to world
 		refresh_collisionshape()
 
-		
-
+	print(int(global_position.x / 8))
 	
 	debug()
 	move_and_slide()
@@ -79,6 +78,8 @@ func refresh_collisionshape(): # Sets the player collision based on the stack he
 		$CollisionShape2D.position += Vector2(0,-4)
 		$CollisionShape2D.shape.extents += Vector2(0,4)
 	
+		
+		
 func debug(): # Debug
 	if Input.is_action_just_pressed("f1"):
 		$camera/CanvasLayer.visible = !$camera/CanvasLayer.visible
