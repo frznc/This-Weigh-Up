@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=4 uid="uid://b7uql0tx5kmb7"]
+
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/player.tscn" id="1_vxwa5"]
+[ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://levels/tileset.tres" id="2_dxsvt"]
+[ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://objects/weight.tscn" id="3_fa7pu"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/endpoint.tscn" id="4_t12fk"]
+[ext_resource type="PackedScene" uid="uid://bindbnw1e5ak8" path="res://scenes/objects/spike.tscn" id="5_u7088"]
+[ext_resource type="PackedScene" uid="uid://bkeecx2y2crjl" path="res://scenes/objects/saw.tscn" id="6_u1uof"]
+[ext_resource type="PackedScene" uid="uid://bnpgc8mvt70i3" path="res://scenes/objects/breakable_block.tscn" id="7_073vg"]
+
+[node name="World" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_vxwa5")]
+position = Vector2(-76, -5)
+
+[node name="tilemap1" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AADy/wAAAAAAAAAAAADz/wAAAAABAAAAAAD0/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAADAAAAAADw/wAAAAAAAAAAAADu/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAAAAAAAAAAAAAAAAADv/wAAAAABAAAAAAD3/wAAAAABAAAAAAD7/wAAAAABAAAAAAD//wAAAAABAAAAAADx/wAAAAADAAAAAAD5/wAAAAADAAAAAAD9/wAAAAADAAAAAADq/wEAAAAAAAAAAADp/wEAAAAAAAAAAADo/wEAAAAAAAAAAADn/wEAAAAAAAAAAADm/wEAAAAAAAAAAADl/wEAAAAAAAAAAADk/wEAAAAAAAAAAADu/wEAAAAAAAAAAADt/wEAAAAAAAAAAADs/wEAAAAAAAAAAADr/wEAAAAAAAAAAADy//r/AAABAAQAAADx//r/AAAAAAQAAADx//v/AAAAAAUAAADy//v/AAABAAUAAAD0//r/AAACAAQAAAD1//r/AAADAAQAAAD0//v/AAACAAUAAAD1//v/AAADAAUAAAD3//r/AAAEAAQAAAD4//r/AAAFAAQAAAD3//v/AAAEAAUAAAD4//v/AAAFAAUAAADj/wEAAAAAAAAAAADi/wEAAAAAAAAAAADg/wAAAAACAAAAAADs/wAAAAACAAAAAADp/wAAAAACAAAAAADl/wAAAAACAAAAAADh/wEAAAAAAAAAAADg/wEAAAAAAAAAAADf/wAAAAAAAAAAAADf/wEAAAAAAAAAAADe/wEAAAAAAAAAAADd/wEAAAAAAAAAAADe/wAAAAAAAAAAAADd/wAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAACAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP7/AAACAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP3/AAACAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAFAP//AAACAAAAAAAIAP7/AAACAAAAAAAIAP//AAACAAAAAAD7//v/AAAAAAAAAAD7//r/AAAAAAAAAAACAPz/AAAAAAAAAAD6//3/AAAAAAAAAAD+//z/AAAAAAAAAAA=")
+tile_set = ExtResource("2_dxsvt")
+
+[node name="weight2" parent="." instance=ExtResource("3_fa7pu")]
+position = Vector2(-20, -4)
+weight_value = 9
+
+[node name="weight5" parent="." instance=ExtResource("3_fa7pu")]
+position = Vector2(-28, -4)
+weight_value = 9
+
+[node name="weight8" parent="." instance=ExtResource("3_fa7pu")]
+position = Vector2(-20, -12)
+weight_value = 5
+
+[node name="weight7" parent="." instance=ExtResource("3_fa7pu")]
+position = Vector2(8, -4)
+weight_value = -3
+
+[node name="Spike" parent="." instance=ExtResource("5_u7088")]
+position = Vector2(-4, -4)
+
+[node name="Saw" parent="." instance=ExtResource("6_u1uof")]
+position = Vector2(-60, -22)
+
+[node name="Endpoint" parent="." instance=ExtResource("4_t12fk")]
+position = Vector2(68, -28)
+next_level = null
+
+[node name="Breakable Block" parent="." instance=ExtResource("7_073vg")]
+position = Vector2(4, -28)

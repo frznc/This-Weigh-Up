@@ -5,7 +5,6 @@ const DEF_JUMP_VELOCITY = -175.0 # unchanging base jump vel
 
 var speed = 80.0
 var jump_velocity = -175.0
-var can_move = true
 
 var death_time = 1
 var too_heavy = false
@@ -18,7 +17,6 @@ var jump_available = true
 
 var weight_mult = 4 # Amount Global.weight impacts jump height and speed.
 
-@onready var world = "res://scenes/world.tscn"
 @onready var weight_obj = preload("res://objects/weight.tscn")
 @onready var weightstack_obj = preload("res://scenes/weight_stack.tscn")
 
@@ -30,14 +28,14 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	run_physics(delta)
-	if can_move:run_movement(delta)
+	if Global.can_move:run_movement(delta)
 	else: velocity.x = 0
 	
 	sprite.play(str(get_player_state())) # Get current state from get_player_state then play the anim
 	# flip sprite based on dir
 	
 	## Drop weights
-	if Input.is_action_just_pressed("drop") and Global.held_weights != [] and Global.weight <= 20:
+	if Input.is_action_just_pressed("drop") and Global.held_weights != [] and Global.can_move:
 		var top_weight_pos = Global.held_weights.size() - 1 # Get the position of the top weight
 		var weight_to_drop = Global.held_weights.pop_at(top_weight_pos) # Get value of top weight
 		print(weight_to_drop)
@@ -95,7 +93,7 @@ func update_weight(): # Update current player Global.weight based on the 'invent
 	speed = DEF_SPEED
 	for x : int in Global.held_weights:
 		Global.weight += x
-	jump_velocity += (Global.weight *  weight_mult)
+	jump_velocity += (Global.weight * (weight_mult / 1.5))
 	speed -= (Global.weight * weight_mult)
 	
 	if Global.weight > 15:
@@ -110,12 +108,13 @@ func update_weight(): # Update current player Global.weight based on the 'invent
 		speed = 0
 		jump_velocity = 0
 		too_heavy = true
-		can_move = false
+		Global.can_move = false
 		Global.weight = 21 # Kinda silly but this is done so the dial in the UI doesnt look weird
-		get_tree().create_timer(death_time).timeout.connect(die)
+		get_tree().create_timer(death_time).timeout.connect(die) # NOTE: If you restart the level before this is done, it can still activate and restart it again. Need to fix
 
 
 func die():
+	Global.can_move = false
 	Global.heaviness = 7
 	sprite.visible = false
 	particle_crushed.emitting = true

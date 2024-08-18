@@ -65,7 +65,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnrpn"]
-size = Vector2(7, 6)
+size = Vector2(6.75, 6)
 
 [sub_resource type="Curve" id="Curve_53uy4"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.904494, 0), -0.0489008, 0.0, 0, 0]
@@ -75,7 +75,8 @@ point_count = 2
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="player" type="CharacterBody2D"]
-z_index = 1
+z_index = 1000
+z_as_relative = false
 collision_layer = 2
 script = ExtResource("1_tj0eu")
 
@@ -84,7 +85,7 @@ sprite_frames = SubResource("SpriteFrames_gqwo0")
 animation = &"crouch"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.25, 2)
+position = Vector2(0.375, 2)
 shape = SubResource("RectangleShape2D_pnrpn")
 
 [node name="camera" type="Camera2D" parent="."]
@@ -129,14 +130,13 @@ theme = ExtResource("3_vtwbp")
 layout_mode = 2
 theme = ExtResource("3_vtwbp")
 
-[node name="UI" parent="camera" instance=ExtResource("5_olsrx")]
-
 [node name="Pause" parent="camera" instance=ExtResource("4_i1m2f")]
-z_index = 1000
 offset_left = -133.0
 offset_top = -135.0
 offset_right = 131.0
 offset_bottom = 96.0
+
+[node name="UI" parent="camera" instance=ExtResource("5_olsrx")]
 
 [node name="Crushed Particles" type="CPUParticles2D" parent="."]
 z_index = 500

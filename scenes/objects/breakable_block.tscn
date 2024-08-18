@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://bnpgc8mvt70i3"]
+
+[ext_resource type="Script" path="res://scenes/objects/breakable_block.gd" id="1_qpcdo"]
+[ext_resource type="Texture2D" uid="uid://bbkeadqb4hrch" path="res://textures/breakable.png" id="1_uggnc"]
+[ext_resource type="FontFile" uid="uid://bjuv3x1m38iht" path="res://textures/04B_03__.TTF" id="2_4x6tt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfixa"]
+atlas = ExtResource("1_uggnc")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye0bp"]
+atlas = ExtResource("1_uggnc")
+region = Rect2(8, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wpy0"]
+atlas = ExtResource("1_uggnc")
+region = Rect2(24, 0, 24, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_20ba5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfixa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye0bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wpy0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0nj2"]
+size = Vector2(8, 8.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3glip"]
+size = Vector2(2, 2)
+
+[sub_resource type="Curve" id="Curve_eavge"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.904494, 0), -0.0489008, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hku3y"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Breakable Block" type="Node2D"]
+script = ExtResource("1_qpcdo")
+size = 3
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_20ba5")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 5.0
+offset_bottom = 4.0
+theme_override_colors/font_color = Color(0.621926, 0, 0.197367, 1)
+theme_override_fonts/font = ExtResource("2_4x6tt")
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_d0nj2")
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_3glip")
+
+[node name="Reset" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Break Particles" type="CPUParticles2D" parent="."]
+z_index = 500
+z_as_relative = false
+emitting = false
+amount = 10
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(4, 4)
+spread = 180.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+angular_velocity_min = 90.0
+angular_velocity_max = 450.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_eavge")
+color = Color(0.449111, 0.508374, 0.541999, 1)
+color_ramp = SubResource("Gradient_hku3y")
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
+[connection signal="timeout" from="Reset" to="." method="_on_reset_timeout"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8mqhigxgnk8s"]
 
 [ext_resource type="Texture2D" uid="uid://b0xdxk3dv8utx" path="res://textures/scale.png" id="1_8eeim"]
-[ext_resource type="Script" path="res://scenes/ui.gd" id="1_414ba"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_414ba"]
 [ext_resource type="FontFile" uid="uid://bjuv3x1m38iht" path="res://textures/04B_03__.TTF" id="2_38o6n"]
 [ext_resource type="Texture2D" uid="uid://5l7p3divtdl7" path="res://textures/dial.png" id="3_hvqsq"]
 [ext_resource type="Texture2D" uid="uid://bif8d52uiyoln" path="res://textures/bump.png" id="4_lqt71"]
@@ -11,23 +11,23 @@
 script = ExtResource("1_414ba")
 
 [node name="Scale" type="Sprite2D" parent="."]
-position = Vector2(16, 141)
+position = Vector2(17, 141)
 texture = ExtResource("1_8eeim")
 
 [node name="Dial" type="Sprite2D" parent="."]
-position = Vector2(15, 149)
+position = Vector2(16, 149)
 rotation = 3.14159
 texture = ExtResource("3_hvqsq")
 centered = false
 
 [node name="Negative Dial" type="Sprite2D" parent="."]
-position = Vector2(15, 149)
+position = Vector2(16, 149)
 rotation = -3.14159
 texture = ExtResource("4_x5rj5")
 centered = false
 
 [node name="Bump" type="Sprite2D" parent="."]
-position = Vector2(16, 141)
+position = Vector2(17, 141)
 texture = ExtResource("4_lqt71")
 
 [node name="Label" type="Label" parent="."]

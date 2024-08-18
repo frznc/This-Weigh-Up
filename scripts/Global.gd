@@ -1,5 +1,7 @@
 extends Node
 
+var can_move = true
+
 var weight = 0
 var heaviness = 0
 
@@ -7,6 +9,7 @@ var held_weights = [] # Array containing the weights the player is holding
 var nearby_weights = [] # List of weights within pickup range. Used in avoiding picking up multiple at once.
 
 func restart_level():
+	Global.can_move = true
 	reset_globals()
 	get_tree().paused = false
 	get_tree().reload_current_scene()

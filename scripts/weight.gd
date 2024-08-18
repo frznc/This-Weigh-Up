@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Player has picked up the weight, add it to them
-	if (Input.is_action_just_pressed("pickup")) and player_inside and Global.weight <= 20:
+	if (Input.is_action_just_pressed("pickup")) and player_inside and Global.can_move:
 		if Global.nearby_weights.back() == name:
 			Global.held_weights.push_back(weight_value) # Add weight to global array
 			player.update_weight() # update the player's weight value

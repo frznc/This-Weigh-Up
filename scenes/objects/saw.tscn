@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkeecx2y2crjl"]
+
+[ext_resource type="Script" path="res://scripts/saw.gd" id="1_r34ar"]
+[ext_resource type="Texture2D" uid="uid://crpv8l7g5q6si" path="res://textures/saw.png" id="2_o86wt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e36fc"]
+atlas = ExtResource("2_o86wt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikxvk"]
+atlas = ExtResource("2_o86wt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_phv66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e36fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikxvk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jbtl"]
+size = Vector2(9, 9)
+
+[node name="Saw" type="Node2D"]
+script = ExtResource("1_r34ar")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_phv66")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_7jbtl")
+
+[node name="Rotation" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Rotation" to="." method="_on_rotation_timeout"]

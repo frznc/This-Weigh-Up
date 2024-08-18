@@ -22,9 +22,9 @@ func _process(delta: float) -> void:
 	global_position += current_offset
 	
 	# Offset a pixel based on movement direction
-	if Input.is_action_just_pressed("right") and Global.weight <= 20:
+	if Input.is_action_just_pressed("right") and Global.can_move:
 		current_offset = Vector2(-0.2,0)
-	if Input.is_action_just_pressed("left") and Global.weight <= 20:
+	if Input.is_action_just_pressed("left") and Global.can_move:
 		current_offset = Vector2(0.2,0)
 	
 		
