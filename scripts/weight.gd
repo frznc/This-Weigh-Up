@@ -1,9 +1,11 @@
 extends RigidBody2D
 
 var player_inside = false
-@export_range(-9,9) var weight_value : int = 0 
+var test = false
 
+@export_range(-9,9) var weight_value : int = 0 
 @onready var player = get_tree().current_scene.get_node("player")
+
 
 func _ready() -> void:
 	# Value is negative, change it to the correct frame
@@ -21,9 +23,9 @@ func _physics_process(delta: float) -> void:
 			player.update_weight() # update the player's weight value
 			player.add_to_weightstack(weight_value) # Add to the 'weight stack'
 			queue_free()
-			
 
 
+	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		player_inside = true

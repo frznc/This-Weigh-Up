@@ -13,6 +13,7 @@ config_version=5
 config/name="GMTK2024"
 run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.164874, 0.173119, 0.222863, 1)
 config/icon="res://textures/icon.svg"
 
 [autoload]
@@ -26,6 +27,7 @@ window/size/viewport_width=256
 window/size/viewport_height=224
 window/size/mode=2
 window/stretch/mode="viewport"
+window/stretch/scale=1.5
 
 [input]
 
@@ -73,4 +75,5 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.240447, 0.251343, 0.316836, 1)
 2d/snap/snap_2d_transforms_to_pixel=true

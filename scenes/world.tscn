@@ -11,7 +11,6 @@
 position = Vector2(-3.74999, -57.5)
 
 [node name="tilemap1" type="TileMapLayer" parent="."]
-z_index = 99
 use_parent_material = true
 tile_map_data = PackedByteArray("AADy/wAAAAAAAAAAAADz/wAAAAABAAAAAAD0/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAADAAAAAADw/wAAAAAAAAAAAADu/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAAAAAAAAAAAAAAAAADv/wAAAAABAAAAAAD3/wAAAAABAAAAAAD7/wAAAAABAAAAAAD//wAAAAABAAAAAADx/wAAAAADAAAAAAD5/wAAAAADAAAAAAD9/wAAAAADAAAAAADq/wEAAAAAAAAAAADp/wEAAAAAAAAAAADo/wEAAAAAAAAAAADn/wEAAAAAAAAAAADm/wEAAAAAAAAAAADl/wEAAAAAAAAAAADk/wEAAAAAAAAAAADu/wEAAAAAAAAAAADt/wEAAAAAAAAAAADs/wEAAAAAAAAAAADr/wEAAAAAAAAAAADy//r/AAABAAQAAADx//r/AAAAAAQAAADx//v/AAAAAAUAAADy//v/AAABAAUAAAD0//r/AAACAAQAAAD1//r/AAADAAQAAAD0//v/AAACAAUAAAD1//v/AAADAAUAAAD3//r/AAAEAAQAAAD4//r/AAAFAAQAAAD3//v/AAAEAAUAAAD4//v/AAAFAAUAAADj/wEAAAAAAAAAAADi/wEAAAAAAAAAAADg/wAAAAACAAAAAADs/wAAAAACAAAAAADp/wAAAAACAAAAAADl/wAAAAACAAAAAADh/wEAAAAAAAAAAADg/wEAAAAAAAAAAADf/wAAAAAAAAAAAADf/wEAAAAAAAAAAADe/wEAAAAAAAAAAADd/wEAAAAAAAAAAADe/wAAAAAAAAAAAADd/wAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAACAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP7/AAACAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP3/AAACAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAFAP//AAACAAAAAAAIAP7/AAACAAAAAAAIAP//AAACAAAAAAD7//v/AAAAAAAAAAD7//r/AAAAAAAAAAACAPz/AAAAAAAAAAD6//3/AAAAAAAAAAA=")
 tile_set = ExtResource("2_ikh7j")
@@ -20,20 +19,20 @@ tile_set = ExtResource("2_ikh7j")
 position = Vector2(-20, -4)
 weight_value = 9
 
-[node name="weight3" parent="." instance=ExtResource("3_svj6x")]
-position = Vector2(-2, -17)
-weight_value = -4
-
-[node name="weight4" parent="." instance=ExtResource("3_svj6x")]
-position = Vector2(4, -4)
-weight_value = -3
-
 [node name="weight5" parent="." instance=ExtResource("3_svj6x")]
-position = Vector2(-10, -5)
+position = Vector2(-20, -20)
 weight_value = 9
 
+[node name="weight8" parent="." instance=ExtResource("3_svj6x")]
+position = Vector2(-20, -12)
+weight_value = 9
+
+[node name="weight7" parent="." instance=ExtResource("3_svj6x")]
+position = Vector2(12, -12)
+weight_value = -3
+
 [node name="weight6" parent="." instance=ExtResource("3_svj6x")]
-position = Vector2(-36, -3)
+position = Vector2(-20, -28)
 weight_value = 7
 
 [node name="Pipe" parent="." instance=ExtResource("4_h82wq")]
