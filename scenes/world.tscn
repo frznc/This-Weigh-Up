@@ -8,7 +8,7 @@
 [node name="World" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_swnbm")]
-position = Vector2(-3.74999, -57.5)
+position = Vector2(-4, -5)
 
 [node name="tilemap1" type="TileMapLayer" parent="."]
 use_parent_material = true

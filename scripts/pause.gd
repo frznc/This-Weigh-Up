@@ -1,8 +1,9 @@
 extends ColorRect
 
-@onready var quit_button: Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit
-@onready var resume_button: Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Resume
-@onready var fullscreen_button: CheckButton = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Fullscreen
+@onready var quit_button : Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit
+@onready var resume_button : Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Resume
+@onready var restart_button : Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Restart
+@onready var fullscreen_button : CheckButton = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Fullscreen
 @onready var volume_slider = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Volume
 @onready var player = get_parent()
 
@@ -10,6 +11,7 @@ func _ready():
 	visible = false
 	
 	resume_button.pressed.connect(unpause)
+	restart_button.pressed.connect(Global.restart_level)
 	quit_button.pressed.connect(get_tree().quit)
 	
 	## set values to defaults from options.gd

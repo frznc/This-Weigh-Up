@@ -10,6 +10,8 @@ var can_move = true
 var death_time = 1
 var too_heavy = false
 
+var restart_time = 1
+
 var jumping = false
 var coyote_time = 0.06
 var jump_available = true
@@ -34,7 +36,6 @@ func _physics_process(delta: float) -> void:
 	sprite.play(str(get_player_state())) # Get current state from get_player_state then play the anim
 	# flip sprite based on dir
 	
-
 	## Drop weights
 	if Input.is_action_just_pressed("drop") and Global.held_weights != [] and Global.weight <= 20:
 		var top_weight_pos = Global.held_weights.size() - 1 # Get the position of the top weight
@@ -50,7 +51,10 @@ func _physics_process(delta: float) -> void:
 		instance.position = position + Vector2(0,(top_weight_pos * -8) - 9) # Set position to top stack position
 		get_parent().add_child(instance) # Add Global.weight to world
 		#refresh_collisionshape()
-
+		
+	# Restart Level
+	if Input.is_action_just_pressed("restart"):
+		Global.restart_level()
 	
 	debug()
 	move_and_slide()
@@ -65,6 +69,8 @@ func run_physics(delta):
 	else:
 		jump_available = true
 		jumping = false
+
+
 func run_movement(delta):
 	# Jumping
 	if Input.is_action_pressed("jump") and jump_available: 
@@ -77,7 +83,7 @@ func run_movement(delta):
 	else: velocity.x = move_toward(velocity.x, 0, speed)
 	if Input.is_action_just_pressed("left"): sprite.flip_h = true 
 	if Input.is_action_just_pressed("right"): sprite.flip_h = false
-	
+
 
 func coyote_timeout():
 	jump_available = false
@@ -108,17 +114,21 @@ func update_weight(): # Update current player Global.weight based on the 'invent
 		Global.weight = 21 # Kinda silly but this is done so the dial in the UI doesnt look weird
 		get_tree().create_timer(death_time).timeout.connect(die)
 
+
 func die():
 	Global.heaviness = 7
 	sprite.visible = false
 	particle_crushed.emitting = true
+	get_tree().create_timer(restart_time).timeout.connect(Global.restart_level)
+
 
 func add_to_weightstack(weight): # Called when picking up a weight. Creates the visual
 	var instance = weightstack_obj.instantiate()
 	instance.weight_value = weight
 	instance.id = Global.held_weights.size() # if weights ID is larger than the size of the stack array, it shouldnt exist!
 	get_parent().add_child(instance)
-	
+
+
 func get_player_state():
 	if too_heavy == true:
 		return "crouch"
@@ -127,6 +137,7 @@ func get_player_state():
 	if Input.is_action_pressed("right") || Input.is_action_pressed("left"):
 		return "walk"
 	return "idle"
+
 
 func debug(): # Debug
 	if Input.is_action_just_pressed("f1"):

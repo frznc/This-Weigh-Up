@@ -12,7 +12,6 @@ shader_parameter/brightness = 0.9
 
 [node name="Pause" type="ColorRect"]
 process_mode = 3
-visible = false
 material = SubResource("ShaderMaterial_jgkdy")
 offset_right = 256.0
 offset_bottom = 224.0
@@ -67,6 +66,11 @@ text = "Fullscreen"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_yu01e")
 text = "Resume"
+
+[node name="Restart" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_yu01e")
+text = "Restart"
 
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
