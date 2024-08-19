@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b7uql0tx5kmb7"]
+[gd_scene load_steps=9 format=4 uid="uid://b7uql0tx5kmb7"]
 
 [ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_dxsvt"]
 [ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/endpoint.tscn" id="2_ffhep"]
@@ -7,18 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://bindbnw1e5ak8" path="res://scenes/objects/spike.tscn" id="5_u7088"]
 [ext_resource type="PackedScene" uid="uid://bkeecx2y2crjl" path="res://scenes/objects/saw.tscn" id="6_u1uof"]
 [ext_resource type="PackedScene" uid="uid://bnpgc8mvt70i3" path="res://scenes/objects/breakable_block.tscn" id="7_073vg"]
+[ext_resource type="PackedScene" uid="uid://ul5vt7t6vjq5" path="res://scenes/objects/stand_scale.tscn" id="8_pikfn"]
 
 [node name="World" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("4_t12fk")]
-position = Vector2(-44, -30)
+position = Vector2(-32, -23)
 
 [node name="Endpoint" parent="." instance=ExtResource("2_ffhep")]
-position = Vector2(68, -28)
+z_as_relative = true
+position = Vector2(-76, -4)
 
 [node name="tilemap1" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AADy/wAAAAAAAAAAAADz/wAAAAABAAAAAAD0/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAADAAAAAADw/wAAAAAAAAAAAADu/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAAAAAAAAAAAAAAAAADv/wAAAAABAAAAAAD3/wAAAAABAAAAAAD7/wAAAAABAAAAAAD//wAAAAABAAAAAADx/wAAAAADAAAAAAD5/wAAAAADAAAAAAD9/wAAAAADAAAAAADq/wEAAAAAAAAAAADp/wEAAAAAAAAAAADo/wEAAAAAAAAAAADn/wEAAAAAAAAAAADm/wEAAAAAAAAAAADl/wEAAAAAAAAAAADk/wEAAAAAAAAAAADu/wEAAAAAAAAAAADt/wEAAAAAAAAAAADs/wEAAAAAAAAAAADr/wEAAAAAAAAAAADy//r/AAABAAQAAADx//r/AAAAAAQAAADx//v/AAAAAAUAAADy//v/AAABAAUAAAD0//r/AAACAAQAAAD1//r/AAADAAQAAAD0//v/AAACAAUAAAD1//v/AAADAAUAAAD3//r/AAAEAAQAAAD4//r/AAAFAAQAAAD3//v/AAAEAAUAAAD4//v/AAAFAAUAAADj/wEAAAAAAAAAAADi/wEAAAAAAAAAAADg/wAAAAACAAAAAADs/wAAAAACAAAAAADp/wAAAAACAAAAAADl/wAAAAACAAAAAADh/wEAAAAAAAAAAADg/wEAAAAAAAAAAADf/wAAAAAAAAAAAADf/wEAAAAAAAAAAADe/wEAAAAAAAAAAADd/wEAAAAAAAAAAADe/wAAAAAAAAAAAADd/wAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP7/AAACAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP3/AAACAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAFAP//AAACAAAAAAAIAP7/AAACAAAAAAAIAP//AAACAAAAAAD7//v/AAAAAAAAAAD7//r/AAAAAAAAAAACAPz/AAAAAAAAAAD+//z/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADy/wAAAAAAAAAAAADz/wAAAAABAAAAAAD0/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAADAAAAAADw/wAAAAAAAAAAAADu/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAAAAAAAAAAAAAAAAADv/wAAAAABAAAAAAD3/wAAAAABAAAAAAD7/wAAAAABAAAAAAD//wAAAAABAAAAAADx/wAAAAADAAAAAAD5/wAAAAADAAAAAAD9/wAAAAADAAAAAADq/wEAAAAAAAAAAADp/wEAAAAAAAAAAADo/wEAAAAAAAAAAADn/wEAAAAAAAAAAADm/wEAAAAAAAAAAADl/wEAAAAAAAAAAADk/wEAAAAAAAAAAADu/wEAAAAAAAAAAADt/wEAAAAAAAAAAADs/wEAAAAAAAAAAADr/wEAAAAAAAAAAADy//r/AAABAAQAAADx//r/AAAAAAQAAADx//v/AAAAAAUAAADy//v/AAABAAUAAAD0//r/AAACAAQAAAD1//r/AAADAAQAAAD0//v/AAACAAUAAAD1//v/AAADAAUAAAD3//r/AAAEAAQAAAD4//r/AAAFAAQAAAD3//v/AAAEAAUAAAD4//v/AAAFAAUAAADj/wEAAAAAAAAAAADi/wEAAAAAAAAAAADg/wAAAAACAAAAAADs/wAAAAACAAAAAADp/wAAAAACAAAAAADl/wAAAAACAAAAAADh/wEAAAAAAAAAAADg/wEAAAAAAAAAAADf/wAAAAAAAAAAAADf/wEAAAAAAAAAAADe/wEAAAAAAAAAAADd/wEAAAAAAAAAAADe/wAAAAAAAAAAAADd/wAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP3/AAACAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAIAP7/AAACAAAAAAAIAP//AAACAAAAAAD7//v/AAAAAAAAAAD7//r/AAAAAAAAAAACAPz/AAAAAAAAAAD+//z/AAAAAAAAAAAGAP//AAADAAAAAAAGAP7/AAADAAAAAAA=")
 tile_set = ExtResource("2_dxsvt")
 
 [node name="Spike" parent="." instance=ExtResource("5_u7088")]
@@ -31,56 +33,62 @@ position = Vector2(-12, -41)
 position = Vector2(4, -28)
 
 [node name="weight" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(-36, -4)
+position = Vector2(-28, -4)
 
 [node name="weight2" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(-28, -4)
+position = Vector2(-20, -4)
 weight_value = 1
 
 [node name="weight3" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(-20, -4)
+position = Vector2(-12, -4)
 weight_value = 2
 
 [node name="weight4" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(-12, -4)
+position = Vector2(-4, -4)
 weight_value = 3
 
 [node name="weight5" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(-4, -4)
+position = Vector2(4, -4)
 weight_value = 4
 
 [node name="weight6" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(4, -4)
+position = Vector2(12, -4)
 weight_value = 5
 
 [node name="weight7" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(12, -4)
+position = Vector2(20, -4)
 weight_value = 6
 
 [node name="weight8" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(20, -4)
+position = Vector2(28, -4)
 weight_value = 7
 
 [node name="weight9" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(28, -4)
+position = Vector2(36, -4)
 weight_value = 8
 
 [node name="weight10" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(36, -4)
+position = Vector2(44, -4)
 weight_value = 9
 
 [node name="weight11" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(-12, -12)
+position = Vector2(-4, -12)
 weight_value = -3
 
 [node name="weight12" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(-4, -12)
+position = Vector2(4, -12)
 weight_value = -4
 
 [node name="weight13" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(4, -12)
+position = Vector2(12, -12)
 weight_value = -5
 
 [node name="weight14" parent="." instance=ExtResource("3_fa7pu")]
-position = Vector2(4, -20)
+position = Vector2(20, -12)
 weight_value = -6
+
+[node name="Stand Scale" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("8_pikfn")]
+z_index = 100
+z_as_relative = false
+position = Vector2(-48, -16)
+endpoint = NodePath("../Endpoint")

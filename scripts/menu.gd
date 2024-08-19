@@ -3,6 +3,8 @@ extends Node2D
 @export var first_level : PackedScene
 
 @onready var pause_menu : Control = get_tree().current_scene.get_node("Pause")
+@onready var puff : CPUParticles2D = $"Logo Body/Puff"
+@onready var thud : AudioStreamPlayer2D = $thud
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,3 +27,8 @@ func _on_options_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_timer_timeout() -> void:
+	puff.emitting = true
+	thud.play()

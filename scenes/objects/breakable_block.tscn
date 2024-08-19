@@ -85,7 +85,7 @@ position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_3glip")
 
 [node name="Reset" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Break Particles" type="CPUParticles2D" parent="."]
