@@ -35,8 +35,8 @@ func _process(delta: float) -> void:
 	#print(weights_inside)
 	# Move min/max points in editor
 	if Engine.is_editor_hint():
-		max_spr.position.y = start_y - (max * 8)
-		min_spr.position.y = start_y + (min * 8)
+		max_spr.position.y = -8 + (max * -8)
+		min_spr.position.y = 8 + (min * -8)
 
 	# Reset the weight
 	weight_held = 0

@@ -14,7 +14,6 @@ size = Vector2(18, 2)
 
 [node name="Stand Scale" type="Node2D"]
 script = ExtResource("1_2mq4k")
-weight_needed = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4y25a")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=4 uid="uid://3atwndoe14dc"]
+
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_emamv"]
+[ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_60k56"]
+[ext_resource type="PackedScene" uid="uid://ul5vt7t6vjq5" path="res://scenes/objects/stand_scale.tscn" id="3_ta38f"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/objects/endpoint.tscn" id="4_txi1y"]
+[ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="5_o263c"]
+
+[node name="DefaultLevel" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_emamv")]
+position = Vector2(-68, 27)
+
+[node name="tilemap1" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD1/wQAAAAAAAAAAAD2/wQAAAAAAAAAAAD3/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAA=")
+tile_set = ExtResource("2_60k56")
+
+[node name="Stand Scale" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("3_ta38f")]
+position = Vector2(48, 16)
+endpoint = NodePath("../Endpoint")
+
+[node name="Endpoint" parent="." instance=ExtResource("4_txi1y")]
+position = Vector2(76, 28)
+
+[node name="weight" parent="." instance=ExtResource("5_o263c")]
+position = Vector2(20, 28)
+weight_value = 1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://bdtu5xpxxothe"]
 
-[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/player.tscn" id="1_rtekc"]
-[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/endpoint.tscn" id="2_xkqlx"]
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_rtekc"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/objects/endpoint.tscn" id="2_xkqlx"]
 [ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="3_pfoc3"]
 [ext_resource type="PackedScene" uid="uid://bindbnw1e5ak8" path="res://scenes/objects/spike.tscn" id="4_p7iht"]
 [ext_resource type="PackedScene" uid="uid://bkeecx2y2crjl" path="res://scenes/objects/saw.tscn" id="5_f5sku"]
@@ -48,7 +48,7 @@ min = -5
 [node name="Platform Scale2" parent="." node_paths=PackedStringArray("compare_scale") instance=ExtResource("8_yqfsy")]
 position = Vector2(44, 4)
 compare_scale = NodePath("../Platform Scale")
-max = 5
+max = 3
 min = -5
 
 [node name="weight2" parent="." instance=ExtResource("9_lf0sf")]

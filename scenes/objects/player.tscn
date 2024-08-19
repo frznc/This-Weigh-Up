@@ -1,22 +1,22 @@
 [gd_scene load_steps=23 format=3 uid="uid://wjseg178c4rq"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_tj0eu"]
-[ext_resource type="Texture2D" uid="uid://cn76kf8yhp2k1" path="res://textures/jetguy.png" id="2_keqxy"]
-[ext_resource type="Texture2D" uid="uid://bmo6xfs82owhm" path="res://textures/paws.png" id="2_nkul8"]
-[ext_resource type="Theme" uid="uid://da6ednpdx62ww" path="res://theme.tres" id="3_vtwbp"]
-[ext_resource type="PackedScene" uid="uid://yuw15pr1pj53" path="res://scenes/pause.tscn" id="4_i1m2f"]
-[ext_resource type="PackedScene" uid="uid://c8mqhigxgnk8s" path="res://scenes/ui.tscn" id="5_olsrx"]
-[ext_resource type="AudioStream" uid="uid://c6egpbj5fcggk" path="res://sounds/jump.wav" id="7_4vxue"]
-[ext_resource type="AudioStream" uid="uid://c3ttoqgsg60rg" path="res://sounds/crush.wav" id="8_v0odt"]
-[ext_resource type="AudioStream" uid="uid://c4rraxpdie4jc" path="res://sounds/death.wav" id="9_04edr"]
-[ext_resource type="AudioStream" uid="uid://bmbnme8vwmigw" path="res://sounds/pickup.wav" id="10_gt4yp"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_gev8y"]
+[ext_resource type="Texture2D" uid="uid://bmo6xfs82owhm" path="res://textures/paws.png" id="2_yvkrc"]
+[ext_resource type="Texture2D" uid="uid://cn76kf8yhp2k1" path="res://textures/jetguy.png" id="3_8mbsv"]
+[ext_resource type="Theme" uid="uid://da6ednpdx62ww" path="res://theme.tres" id="4_tv57i"]
+[ext_resource type="PackedScene" uid="uid://yuw15pr1pj53" path="res://scenes/pause.tscn" id="5_acbic"]
+[ext_resource type="PackedScene" uid="uid://c8mqhigxgnk8s" path="res://scenes/ui.tscn" id="6_27wmv"]
+[ext_resource type="AudioStream" uid="uid://c6egpbj5fcggk" path="res://sounds/jump.wav" id="7_yanh3"]
+[ext_resource type="AudioStream" uid="uid://c3ttoqgsg60rg" path="res://sounds/crush.wav" id="8_27dmb"]
+[ext_resource type="AudioStream" uid="uid://c4rraxpdie4jc" path="res://sounds/death.wav" id="9_nvbok"]
+[ext_resource type="AudioStream" uid="uid://bmbnme8vwmigw" path="res://sounds/pickup.wav" id="10_kjaro"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rs1lq"]
-atlas = ExtResource("2_nkul8")
+atlas = ExtResource("2_yvkrc")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xijii"]
-atlas = ExtResource("2_nkul8")
+atlas = ExtResource("2_yvkrc")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l4x0e"]
@@ -34,23 +34,23 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8iay"]
-atlas = ExtResource("2_keqxy")
+atlas = ExtResource("3_8mbsv")
 region = Rect2(90, 0, 9, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iadik"]
-atlas = ExtResource("2_keqxy")
+atlas = ExtResource("3_8mbsv")
 region = Rect2(54, 0, 9, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_po0yn"]
-atlas = ExtResource("2_keqxy")
+atlas = ExtResource("3_8mbsv")
 region = Rect2(99, 0, 9, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_brn6f"]
-atlas = ExtResource("2_keqxy")
+atlas = ExtResource("3_8mbsv")
 region = Rect2(54, 0, 9, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5bxe"]
-atlas = ExtResource("2_keqxy")
+atlas = ExtResource("3_8mbsv")
 region = Rect2(63, 0, 9, 9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gqwo0"]
@@ -105,7 +105,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 z_index = 200
 z_as_relative = false
 collision_layer = 2
-script = ExtResource("1_tj0eu")
+script = ExtResource("1_gev8y")
 
 [node name="hands" type="AnimatedSprite2D" parent="."]
 z_index = 201
@@ -142,37 +142,37 @@ offset_bottom = 40.0
 
 [node name="held weights" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_vtwbp")
+theme = ExtResource("4_tv57i")
 theme_override_font_sizes/font_size = 8
 
 [node name="weight" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_vtwbp")
+theme = ExtResource("4_tv57i")
 theme_override_font_sizes/font_size = 8
 
 [node name="--" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_vtwbp")
+theme = ExtResource("4_tv57i")
 theme_override_font_sizes/font_size = 8
 text = "--"
 
 [node name="speed" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_vtwbp")
+theme = ExtResource("4_tv57i")
 theme_override_font_sizes/font_size = 8
 
 [node name="jump vel" type="Label" parent="camera/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_vtwbp")
+theme = ExtResource("4_tv57i")
 theme_override_font_sizes/font_size = 8
 
-[node name="Pause" parent="camera" instance=ExtResource("4_i1m2f")]
+[node name="Pause" parent="camera" instance=ExtResource("5_acbic")]
 offset_left = -133.0
 offset_top = -135.0
 offset_right = 131.0
 offset_bottom = 96.0
 
-[node name="UI" parent="camera" instance=ExtResource("5_olsrx")]
+[node name="UI" parent="camera" instance=ExtResource("6_27wmv")]
 
 [node name="Crushed Particles" type="CPUParticles2D" parent="."]
 z_index = 500
@@ -197,13 +197,13 @@ scale_amount_curve = SubResource("Curve_53uy4")
 color_ramp = SubResource("Gradient_ln64w")
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_4vxue")
+stream = ExtResource("7_yanh3")
 
 [node name="crush" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_v0odt")
+stream = ExtResource("8_27dmb")
 
 [node name="death" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_04edr")
+stream = ExtResource("9_nvbok")
 
 [node name="Death Timer" type="Timer" parent="."]
 one_shot = true
@@ -211,11 +211,11 @@ one_shot = true
 [node name="Restart Timer" type="Timer" parent="."]
 
 [node name="pickup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_gt4yp")
+stream = ExtResource("10_kjaro")
 pitch_scale = 0.58
 
 [node name="drop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_gt4yp")
+stream = ExtResource("10_kjaro")
 pitch_scale = 0.4
 
 [connection signal="timeout" from="Death Timer" to="." method="_on_death_timer_timeout"]

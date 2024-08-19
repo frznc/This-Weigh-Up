@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=4 uid="uid://b7uql0tx5kmb7"]
 
 [ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_dxsvt"]
-[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/endpoint.tscn" id="2_ffhep"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/objects/endpoint.tscn" id="2_ffhep"]
 [ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="3_fa7pu"]
-[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/player.tscn" id="4_t12fk"]
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="4_t12fk"]
 [ext_resource type="PackedScene" uid="uid://bindbnw1e5ak8" path="res://scenes/objects/spike.tscn" id="5_u7088"]
 [ext_resource type="PackedScene" uid="uid://bkeecx2y2crjl" path="res://scenes/objects/saw.tscn" id="6_u1uof"]
 [ext_resource type="PackedScene" uid="uid://bnpgc8mvt70i3" path="res://scenes/objects/breakable_block.tscn" id="7_073vg"]
