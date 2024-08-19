@@ -129,6 +129,7 @@ func die():
 	particle_crushed.emitting = true
 	get_tree().create_timer(restart_time).timeout.connect(Global.restart_level)
 	$death.play()
+	hands.visible = false
 
 func add_to_weightstack(weight): # Called when picking up a weight. Creates the visual
 	var instance = weightstack_obj.instantiate()
