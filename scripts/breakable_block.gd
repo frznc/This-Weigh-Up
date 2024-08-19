@@ -34,6 +34,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		sprite.frame = size - 1
 	if player_inside and weight_limit <= Global.weight and sprite.visible:
 		switch_state()
 
