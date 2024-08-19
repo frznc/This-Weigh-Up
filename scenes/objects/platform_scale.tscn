@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://3cmjaiun7hux"]
+[gd_scene load_steps=8 format=3 uid="uid://3cmjaiun7hux"]
 
 [ext_resource type="Script" path="res://scripts/platform_scale.gd" id="1_5ynsy"]
 [ext_resource type="Texture2D" uid="uid://do8ne7qel0ay" path="res://textures/platform_scale.png" id="1_7qiu6"]
 [ext_resource type="FontFile" uid="uid://bjuv3x1m38iht" path="res://textures/04B_03__.TTF" id="2_nwb2r"]
+[ext_resource type="Texture2D" uid="uid://cbwra3js1x4i1" path="res://textures/max.png" id="4_qjcqe"]
+[ext_resource type="Texture2D" uid="uid://bc6c5r4v68hgm" path="res://textures/min.png" id="5_qalc3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xcd0"]
 size = Vector2(24, 8)
@@ -16,7 +18,22 @@ script = ExtResource("1_5ynsy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7qiu6")
 
-[node name="Label" type="Label" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_8xcd0")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D/StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D/Area2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_2hjxr")
+
+[node name="Label" type="Label" parent="Sprite2D/StaticBody2D"]
 offset_left = -4.0
 offset_top = -5.0
 offset_right = 5.0
@@ -30,20 +47,13 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+[node name="Max Point" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("4_qjcqe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_8xcd0")
+[node name="Min Point" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+texture = ExtResource("5_qalc3")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_2hjxr")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Sprite2D/StaticBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Sprite2D/StaticBody2D/Area2D" to="." method="_on_area_2d_body_exited"]

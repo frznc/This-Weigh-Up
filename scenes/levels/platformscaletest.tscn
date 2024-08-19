@@ -31,17 +31,24 @@ position = Vector2(-62, -65)
 
 [node name="Breakable Block" parent="." instance=ExtResource("6_7ihag")]
 position = Vector2(27, -53)
+size = 0
 
 [node name="Stand Scale" parent="." instance=ExtResource("7_1dtwd")]
 z_index = 100
 z_as_relative = false
 position = Vector2(-48, -16)
 
-[node name="Platform Scale" parent="." instance=ExtResource("8_yqfsy")]
+[node name="Platform Scale" parent="." node_paths=PackedStringArray("compare_scale") instance=ExtResource("8_yqfsy")]
 position = Vector2(4, 4)
+compare_scale = NodePath("../Platform Scale2")
+max = 5
+min = -5
 
-[node name="Platform Scale" parent="Platform Scale" instance=ExtResource("8_yqfsy")]
-position = Vector2(40, 0)
+[node name="Platform Scale2" parent="." node_paths=PackedStringArray("compare_scale") instance=ExtResource("8_yqfsy")]
+position = Vector2(44, 4)
+compare_scale = NodePath("../Platform Scale")
+max = 5
+min = -5
 
 [node name="weight2" parent="." instance=ExtResource("9_lf0sf")]
 position = Vector2(20, -4)
