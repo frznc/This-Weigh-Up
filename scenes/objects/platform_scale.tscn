@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://3cmjaiun7hux"]
 
-[ext_resource type="Script" path="res://scenes/objects/platform_scale.gd" id="1_5ynsy"]
+[ext_resource type="Script" path="res://scripts/platform_scale.gd" id="1_5ynsy"]
 [ext_resource type="Texture2D" uid="uid://do8ne7qel0ay" path="res://textures/platform_scale.png" id="1_7qiu6"]
 [ext_resource type="FontFile" uid="uid://bjuv3x1m38iht" path="res://textures/04B_03__.TTF" id="2_nwb2r"]
 
