@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var weight_needed : int = 1
+@export_range(1, 20) var weight_needed : int = 1
 @export var endpoint : Node2D
 
 @onready var player = get_tree().current_scene.get_node("player")
