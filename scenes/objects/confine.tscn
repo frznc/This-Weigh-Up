@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://35n3wcfappjx"]
+
+[ext_resource type="Script" path="res://scripts/confine.gd" id="1_lmkib"]
+[ext_resource type="Texture2D" uid="uid://cbwra3js1x4i1" path="res://textures/max.png" id="3_mldyx"]
+
+[node name="Confine" type="Node2D"]
+script = ExtResource("1_lmkib")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("3_mldyx")

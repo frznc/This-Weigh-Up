@@ -66,7 +66,7 @@ color_ramp = SubResource("Gradient_m5l3r")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(85, 154)
+position = Vector2(85, 156)
 shape = SubResource("RectangleShape2D_e7to8")
 
 [node name="Play" type="Button" parent="."]
@@ -98,7 +98,7 @@ text = "Exit
 [node name="Pause" parent="." instance=ExtResource("4_4ceiw")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.57
+wait_time = 0.58
 one_shot = true
 autostart = true
 

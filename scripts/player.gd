@@ -28,6 +28,7 @@ var closest_distance = INF
 @onready var particle_sweat = $"Sweat Particles"
 @onready var pickup_sound = $pickup
 @onready var drop_sound = $drop
+@onready var camera = $camera
 
 @onready var death_timer = $"Death Timer"
 @onready var restart_timer = $"Restart Timer"
@@ -76,6 +77,9 @@ func _physics_process(delta: float) -> void:
 		death_timer.stop()
 		restart_timer.stop()
 		Global.restart_level()
+	
+	# Set camera confine
+	camera.limit_right = Global.confine - 4
 	
 	debug()
 	move_and_slide()

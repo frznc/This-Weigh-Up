@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=4 uid="uid://3atwndoe14dc"]
+
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_5cw0f"]
+[ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_me8q6"]
+[ext_resource type="PackedScene" uid="uid://ul5vt7t6vjq5" path="res://scenes/objects/stand_scale.tscn" id="3_qnu4t"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/objects/endpoint.tscn" id="4_uprfx"]
+[ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="5_tw3n6"]
+
+[node name="Lv1" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_5cw0f")]
+position = Vector2(36, 27)
+
+[node name="tilemap1" type="TileMapLayer" parent="."]
+use_parent_material = true
+position = Vector2(0, 9)
+tile_map_data = PackedByteArray("AAAAAPP/AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPf/AAAAAAAAAAAAAPb/AAAAAAAAAAAAAPX/AAAAAAAAAAAAAPT/AAAAAAAAAAAAAAMAAAAAAAUAAAABAAMAAAABAAUAAAACAAMAAAABAAUAAAADAAMAAAABAAUAAAAEAAMAAAABAAUAAAAFAAMAAAABAAUAAAAGAAMAAAABAAUAAAAHAAMAAAABAAUAAAAIAAMAAAABAAUAAAAJAAMAAAABAAUAAAAKAAMAAAABAAUAAAALAAMAAAABAAUAAAAMAAMAAAABAAUAAAANAAMAAAABAAUAAAAOAAMAAAABAAUAAAAPAAMAAAABAAUAAAAQAAMAAAABAAUAAAARAAMAAAABAAUAAAASAAMAAAABAAUAAAATAAMAAAABAAUAAAAUAAMAAAABAAUAAAAVAAMAAAABAAUAAAAWAAMAAAABAAUAAAAXAAMAAAABAAUAAAAYAAMAAAABAAUAAAAZAAMAAAABAAUAAAAaAAMAAAABAAUAAAAbAAMAAAACAAUAAAA=")
+tile_set = ExtResource("2_me8q6")
+
+[node name="Stand Scale" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("3_qnu4t")]
+position = Vector2(125, 17)
+endpoint = NodePath("../Endpoint")
+
+[node name="Endpoint" parent="." instance=ExtResource("4_uprfx")]
+position = Vector2(156, 29)
+
+[node name="weight" parent="." instance=ExtResource("5_tw3n6")]
+position = Vector2(100, 28)
+weight_value = 2
+
+[node name="weight2" parent="." instance=ExtResource("5_tw3n6")]
+position = Vector2(84, 28)
+weight_value = 2
+
+[node name="weight4" parent="." instance=ExtResource("5_tw3n6")]
+position = Vector2(68, 28)
+weight_value = 2
+
+[node name="weight3" parent="." instance=ExtResource("5_tw3n6")]
+position = Vector2(52, 28)
+weight_value = 9

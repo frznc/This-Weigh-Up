@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=4 uid="uid://c1loorygq2ep6"]
+
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_uqba8"]
+[ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_2x88k"]
+[ext_resource type="PackedScene" uid="uid://ul5vt7t6vjq5" path="res://scenes/objects/stand_scale.tscn" id="3_omayh"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/objects/endpoint.tscn" id="4_nb52k"]
+[ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="5_365vs"]
+[ext_resource type="PackedScene" uid="uid://35n3wcfappjx" path="res://scenes/objects/confine.tscn" id="6_1353k"]
+
+[node name="Lv2" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_uqba8")]
+position = Vector2(36, 27)
+
+[node name="tilemap1" type="TileMapLayer" parent="."]
+use_parent_material = true
+position = Vector2(0, 9)
+tile_map_data = PackedByteArray("AAAAAPP/AAAEAAgAAAAAAAIAAAAEAAgAAAAAAAEAAAAEAAgAAAAAAAAAAAAEAAgAAAAAAP//AAAEAAgAAAAAAP7/AAAEAAgAAAAAAP3/AAAEAAgAAAAAAPz/AAAEAAgAAAAAAPv/AAAEAAgAAAAAAPr/AAAEAAgAAAAAAPn/AAAEAAgAAAAAAPj/AAAEAAgAAAAAAPf/AAAEAAgAAAAAAPb/AAAEAAgAAAAAAPX/AAAEAAgAAAAAAPT/AAAEAAgAAAAAAAMAAAAEAAgAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAAAAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAAXAAMAAAAAAAAAAAAYAAMAAAAAAAAAAAAAAAUAAAAEAAgAAAAAAAQAAAAEAAgAAAAZAAUAAAAEAAgAAAAZAAQAAAAEAAgAAAAZAAMAAAAEAAgAAAAZAAIAAAAEAAgAAAAZAAEAAAAEAAgAAAAZAAAAAAAEAAgAAAAZAP//AAAEAAgAAAAZAP7/AAAEAAgAAAAZAP3/AAAEAAgAAAAZAPz/AAAEAAgAAAAZAPv/AAAEAAgAAAAZAPr/AAAEAAgAAAAZAPn/AAAEAAgAAAAZAPj/AAAEAAgAAAAZAPf/AAAEAAgAAAAZAPb/AAAEAAgAAAAZAPX/AAAEAAgAAAAZAPT/AAAEAAgAAAAZAPP/AAAEAAgAAAA=")
+tile_set = ExtResource("2_2x88k")
+
+[node name="Stand Scale" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("3_omayh")]
+position = Vector2(120, 17)
+endpoint = NodePath("../Endpoint")
+
+[node name="Endpoint" parent="." instance=ExtResource("4_nb52k")]
+position = Vector2(148, 29)
+
+[node name="weight" parent="." instance=ExtResource("5_365vs")]
+position = Vector2(76, 29)
+weight_value = 2
+
+[node name="weight2" parent="." instance=ExtResource("5_365vs")]
+position = Vector2(188, 30)
+weight_value = 1
+
+[node name="Confine" parent="." instance=ExtResource("6_1353k")]
+position = Vector2(212, 53)

@@ -19,6 +19,8 @@ script = ExtResource("1_x2ykj")
 next_level = SubResource("Resource_ek67n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(1.5, 1)
 texture = ExtResource("2_tvp4l")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -26,7 +28,7 @@ position = Vector2(0, 4)
 amount = 4
 lifetime = 0.6
 emission_shape = 3
-emission_rect_extents = Vector2(3.5, 0)
+emission_rect_extents = Vector2(5.5, 0)
 gravity = Vector2(0, -50)
 color = Color(0.858824, 0.815686, 0.419608, 0.317647)
 color_ramp = SubResource("Gradient_bvu82")

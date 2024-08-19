@@ -23,8 +23,8 @@ Options="*res://scripts/options.gd"
 
 [display]
 
-window/size/viewport_width=170
-window/size/viewport_height=150
+window/size/viewport_width=168
+window/size/viewport_height=152
 window/size/mode=2
 window/stretch/mode="viewport"
 

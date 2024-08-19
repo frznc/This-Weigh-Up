@@ -31,7 +31,6 @@ position = Vector2(-62, -65)
 
 [node name="Breakable Block" parent="." instance=ExtResource("6_7ihag")]
 position = Vector2(27, -53)
-size = 0
 
 [node name="Stand Scale" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("7_1dtwd")]
 z_index = 100
