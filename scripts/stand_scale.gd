@@ -11,7 +11,9 @@ extends Node2D
 @onready var pip_timer = $"Pip Tick"
 @onready var blip = $blip
 @onready var yay = $complete
+@onready var error = $error
 
+var error_told = false
 var complete = false
 var player_inside = false
 var pips = []
@@ -38,16 +40,22 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_inside and pip_timer.is_stopped() and !complete:
-		print("Weight: ", Global.weight, " Needed: ", weight_needed)
 		pips_queue = (float(Global.weight) / weight_needed) * 10
-		print(pips_queue)
 		if pips_queue > 10:
 			pips_queue = 10
 		if pips_queue > 9 and pips_queue < 10:
 			pips_queue = 9
-		if Global.weight > 0:
+		if Global.weight > 0 and Global.weight <= weight_needed:
 			pips[pips_lit].light_up(pips_lit)
-		pip_timer.start()
+		var weight_ratio = clamp(float(Global.weight) / weight_needed, 0, 1)
+		pip_timer.wait_time = lerp(0.25, 0.06, weight_ratio)
+		if Global.weight > weight_needed and !error_told:
+			error_told = true
+			error.play()
+			for pip in pips:
+				pip.too_much()
+		elif Global.weight <= weight_needed:
+			pip_timer.start()
 	elif !player_inside:
 		pip_timer.stop()
 
@@ -60,13 +68,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "player":
 		if !complete:
-			if Global.weight > 0 and pips_lit > 0:
+			if Global.weight > 0 and (pips_lit > 0 or Global.weight > weight_needed):
 				blip.play()
 			pips_queue = 0
 			pips_lit = 0
 			for x in 10:
 				pips[x].dim()
 		player_inside = false
+		error_told = false
 
 
 func _on_pip_tick_timeout() -> void:

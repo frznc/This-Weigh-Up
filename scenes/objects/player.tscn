@@ -120,8 +120,14 @@ position = Vector2(0.375, 2)
 shape = SubResource("RectangleShape2D_pnrpn")
 
 [node name="camera" type="Camera2D" parent="."]
-top_level = true
 offset = Vector2(0, -20)
+limit_left = 0
+limit_top = -75
+limit_bottom = 75
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_top_margin = 1.0
+drag_right_margin = 0.3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="camera"]
 visible = false
@@ -166,13 +172,12 @@ layout_mode = 2
 theme = ExtResource("4_tv57i")
 theme_override_font_sizes/font_size = 8
 
-[node name="Pause" parent="camera" instance=ExtResource("5_acbic")]
-offset_left = -133.0
-offset_top = -135.0
-offset_right = 131.0
-offset_bottom = 96.0
-
 [node name="UI" parent="camera" instance=ExtResource("6_27wmv")]
+
+[node name="Pause" parent="camera/UI" instance=ExtResource("5_acbic")]
+visible = false
+offset_right = 170.0
+offset_bottom = 150.0
 
 [node name="Crushed Particles" type="CPUParticles2D" parent="."]
 z_index = 500
@@ -194,6 +199,21 @@ angular_velocity_max = 450.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_53uy4")
+color_ramp = SubResource("Gradient_ln64w")
+
+[node name="Sweat Particles" type="CPUParticles2D" parent="."]
+position = Vector2(1, -1)
+rotation = 4.71239
+emitting = false
+amount = 3
+lifetime = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(0, 2)
+spread = 90.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+color = Color(0, 0.343219, 0.747181, 1)
 color_ramp = SubResource("Gradient_ln64w")
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]

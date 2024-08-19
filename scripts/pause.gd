@@ -23,6 +23,14 @@ func _ready():
 	volume_slider.value = Options.data.volume
 
 
+func _process(delta: float) -> void:
+	if get_tree().paused:
+		if DisplayServer.window_get_mode() == 4:
+			fullscreen_button.button_pressed = true
+		else:
+			fullscreen_button.button_pressed = false
+
+
 func goto_menu():
 	Global.reset_globals()
 	unpause()

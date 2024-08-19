@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ul5vt7t6vjq5"]
+[gd_scene load_steps=9 format=3 uid="uid://ul5vt7t6vjq5"]
 
 [ext_resource type="Script" path="res://scripts/stand_scale.gd" id="1_2mq4k"]
 [ext_resource type="Texture2D" uid="uid://clqpqphwwst24" path="res://textures/standscale.png" id="1_4y25a"]
 [ext_resource type="FontFile" uid="uid://bjuv3x1m38iht" path="res://textures/04B_03__.TTF" id="3_lcrmj"]
 [ext_resource type="AudioStream" uid="uid://vbxummvqusin" path="res://sounds/blip.wav" id="4_nuuh5"]
 [ext_resource type="AudioStream" uid="uid://8p5s6gvyc8ba" path="res://sounds/complete.wav" id="5_hohyw"]
+[ext_resource type="AudioStream" uid="uid://m4ud8mwl8lyq" path="res://sounds/too_much.wav" id="6_v3f8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7u85j"]
 size = Vector2(20, 4)
@@ -57,6 +58,9 @@ pitch_scale = 0.6
 [node name="complete" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_hohyw")
 pitch_scale = 0.6
+
+[node name="error" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_v3f8q")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -13,7 +13,6 @@ shader_parameter/brightness = 0.9
 
 [node name="Control" type="Control"]
 process_mode = 3
-visible = false
 z_index = 585
 layout_mode = 3
 anchors_preset = 0

@@ -25,6 +25,7 @@ var closest_distance = INF
 @onready var hands = $hands
 @onready var sprite = $sprite
 @onready var particle_crushed = $"Crushed Particles"
+@onready var particle_sweat = $"Sweat Particles"
 @onready var pickup_sound = $pickup
 @onready var drop_sound = $drop
 
@@ -144,12 +145,18 @@ func update_weight(): # Update current player weight based on the 'inventory'
 	speed -= (Global.weight * weight_mult)
 	
 	if Global.weight > 15:
+		particle_sweat.amount = 4
+		particle_sweat.emitting = true
 		Global.heaviness = 5
 	if Global.weight > 10:
+		particle_sweat.amount = 2
+		particle_sweat.emitting = true
 		Global.heaviness = 3
 	elif Global.weight > 5:
+		particle_sweat.emitting = false
 		Global.heaviness = 1
 	else:
+		particle_sweat.emitting = false
 		Global.heaviness = 0
 	
 	# Player is carrying too much weight, kill them

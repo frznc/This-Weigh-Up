@@ -9,5 +9,10 @@ func light_up(num : int):
 	blip.play()
 	sprite.frame = 1
 
+
 func dim():
 	sprite.frame = 0
+
+
+func too_much():
+	sprite.frame = 2
