@@ -14,6 +14,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 size = Vector2(6, 5)
 
 [node name="Endpoint" type="Node2D"]
+z_as_relative = false
 script = ExtResource("1_caott")
 next_level = SubResource("Resource_ek67n")
 

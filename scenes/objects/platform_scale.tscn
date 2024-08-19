@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://3cmjaiun7hux"]
+
+[ext_resource type="Script" path="res://scenes/objects/platform_scale.gd" id="1_5ynsy"]
+[ext_resource type="Texture2D" uid="uid://do8ne7qel0ay" path="res://textures/platform_scale.png" id="1_7qiu6"]
+[ext_resource type="FontFile" uid="uid://bjuv3x1m38iht" path="res://textures/04B_03__.TTF" id="2_nwb2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xcd0"]
+size = Vector2(24, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hjxr"]
+size = Vector2(14, 2)
+
+[node name="Platform Scale" type="Node2D"]
+script = ExtResource("1_5ynsy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7qiu6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -4.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+scale = Vector2(1, 1.29)
+theme_override_colors/font_color = Color(1, 0, 0.301961, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nwb2r")
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_8xcd0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_2hjxr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

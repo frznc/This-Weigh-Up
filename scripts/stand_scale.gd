@@ -54,17 +54,16 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "player" and body.global_position.y <= stand_box.global_position.y + 8:
-		print("player: ", body.global_position.y, " stand: ", stand_box.global_position.y + 8)
 		player_inside = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "player":
 		if !complete:
+			if Global.weight > 0 and pips_lit > 0:
+				blip.play()
 			pips_queue = 0
 			pips_lit = 0
-			if Global.weight > 0 and player.is_on_floor():
-				blip.play()
 			for x in 10:
 				pips[x].dim()
 		player_inside = false
