@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2024"
-run/main_scene="res://scenes/levels/l2.tscn"
+run/main_scene="res://scenes/levels/platformscaletest.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.164874, 0.173119, 0.222863, 1)
 config/icon="res://textures/icon.svg"
