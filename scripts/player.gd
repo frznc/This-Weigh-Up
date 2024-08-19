@@ -16,12 +16,17 @@ var enable_physics = true
 
 var weight_mult = 4 # Amount that a weight impacts jump height and speed.
 
+var closest_weight = null
+var closest_distance = INF
+
 @onready var weight_obj = preload("res://scenes/objects/weight.tscn")
 @onready var weightstack_obj = preload("res://scenes/weight_stack.tscn")
 
 @onready var hands = $hands
 @onready var sprite = $sprite
 @onready var particle_crushed = $"Crushed Particles"
+@onready var pickup_sound = $pickup
+@onready var drop_sound = $drop
 
 @onready var death_timer = $"Death Timer"
 @onready var restart_timer = $"Restart Timer"
@@ -40,8 +45,29 @@ func _physics_process(delta: float) -> void:
 	
 	position_hands(delta)
 	
+	# Check which weight is closest to the player
+	closest_weight = null
+	closest_distance = INF
+	
+	for weight in Global.nearby_weights:
+		var distance = global_position.distance_to(weight.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_weight = weight
+
+	## Pickup weights
+	if (Input.is_action_just_pressed("pickup")) and Global.nearby_weights != [] and Global.can_move:
+		Global.held_weights.push_back(closest_weight.weight_value) # Add weight to global array
+		update_weight() # update the player's weight value
+		add_to_weightstack(closest_weight.weight_value) # Add to the 'weight stack'
+		pickup_sound.pitch_scale = 0.5 + (Global.held_weights.size() * 0.02)
+		pickup_sound.play()
+		closest_weight.queue_free()
+		pass
+	
 	## Drop weights
 	if Input.is_action_just_pressed("drop") and Global.held_weights != [] and Global.can_move:
+		drop_sound.play()
 		drop_weight(false)
 		
 	# Restart Level

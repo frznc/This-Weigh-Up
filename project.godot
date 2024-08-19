@@ -23,11 +23,10 @@ Options="*res://scripts/options.gd"
 
 [display]
 
-window/size/viewport_width=256
-window/size/viewport_height=224
+window/size/viewport_width=170
+window/size/viewport_height=150
 window/size/mode=2
 window/stretch/mode="viewport"
-window/stretch/scale=1.5
 
 [input]
 

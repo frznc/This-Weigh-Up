@@ -1,17 +1,20 @@
 [gd_scene load_steps=8 format=4 uid="uid://b7uql0tx5kmb7"]
 
-[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/player.tscn" id="1_vxwa5"]
 [ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_dxsvt"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/endpoint.tscn" id="2_ffhep"]
 [ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="3_fa7pu"]
-[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/endpoint.tscn" id="4_t12fk"]
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/player.tscn" id="4_t12fk"]
 [ext_resource type="PackedScene" uid="uid://bindbnw1e5ak8" path="res://scenes/objects/spike.tscn" id="5_u7088"]
 [ext_resource type="PackedScene" uid="uid://bkeecx2y2crjl" path="res://scenes/objects/saw.tscn" id="6_u1uof"]
 [ext_resource type="PackedScene" uid="uid://bnpgc8mvt70i3" path="res://scenes/objects/breakable_block.tscn" id="7_073vg"]
 
 [node name="World" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource("1_vxwa5")]
+[node name="player" parent="." instance=ExtResource("4_t12fk")]
 position = Vector2(-44, -30)
+
+[node name="Endpoint" parent="." instance=ExtResource("2_ffhep")]
+position = Vector2(68, -28)
 
 [node name="tilemap1" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -23,10 +26,6 @@ position = Vector2(60, -4)
 
 [node name="Saw" parent="." instance=ExtResource("6_u1uof")]
 position = Vector2(-12, -41)
-
-[node name="Endpoint" parent="." instance=ExtResource("4_t12fk")]
-position = Vector2(68, -28)
-next_level = null
 
 [node name="Breakable Block" parent="." instance=ExtResource("7_073vg")]
 position = Vector2(4, -28)

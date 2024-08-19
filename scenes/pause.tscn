@@ -17,8 +17,8 @@ visible = false
 z_index = 585
 layout_mode = 3
 anchors_preset = 0
-offset_right = 256.0
-offset_bottom = 224.0
+offset_right = 171.0
+offset_bottom = 149.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_ucs8w")
@@ -98,7 +98,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-text = "  Resume  "
+text = "   Resume   "
 
 [node name="Restart" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer3/VBoxContainer"]
 layout_mode = 2
@@ -110,7 +110,7 @@ text = "   Restart   "
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-text = "    Quit    "
+text = "     Quit     "
 
 [node name="Pause" type="ColorRect" parent="."]
 process_mode = 3

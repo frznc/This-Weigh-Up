@@ -8,34 +8,48 @@ extends Control
 @onready var player = get_parent()
 
 func _ready():
+	# Change depending on if this is the main menu or not
+	if get_tree().get_current_scene().name == "Menu":
+		restart_button.visible = false
+		quit_button.visible = false
+	
 	visible = false
 	
 	resume_button.pressed.connect(unpause)
 	restart_button.pressed.connect(Global.restart_level)
-	quit_button.pressed.connect(get_tree().quit)
+	quit_button.pressed.connect(goto_menu)
 	
 	## set values to defaults from options.gd
 	volume_slider.value = Options.data.volume
-	
+
+
+func goto_menu():
+	Global.reset_globals()
+	unpause()
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+
+
 func _unhandled_input(event: InputEvent):
 	# Pause/Unpause
 	if event.is_action_pressed("pause"):
-		print("hi")
-		if (!get_tree().paused):
+		if !get_tree().paused and get_tree().get_current_scene().name != "Menu":
 			pause()
-		else:
+		elif get_tree().paused:
 			unpause()
+
 
 func pause():
 	$tick.play()
 	visible = true
 	get_tree().paused = true
 
+
 func unpause():
 	$tick.play()
 	Options.save_data()
 	visible = false
 	get_tree().paused = false
+
 
 func _on_fullscreen_check_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
@@ -44,6 +58,7 @@ func _on_fullscreen_check_toggled(toggled_on: bool) -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 		$tick.play()
+
 
 ## set slider values
 func _on_volume_drag_ended(value_changed):
@@ -61,6 +76,7 @@ func _on_volume_value_changed(value): #volume
 
 func _on_debug_toggled(toggled_on):
 	player.tptorooms()
+
 
 func _on_restart_pressed() -> void:
 	$tick.play()

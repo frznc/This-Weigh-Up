@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://wjseg178c4rq"]
+[gd_scene load_steps=23 format=3 uid="uid://wjseg178c4rq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tj0eu"]
 [ext_resource type="Texture2D" uid="uid://cn76kf8yhp2k1" path="res://textures/jetguy.png" id="2_keqxy"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://c6egpbj5fcggk" path="res://sounds/jump.wav" id="7_4vxue"]
 [ext_resource type="AudioStream" uid="uid://c3ttoqgsg60rg" path="res://sounds/crush.wav" id="8_v0odt"]
 [ext_resource type="AudioStream" uid="uid://c4rraxpdie4jc" path="res://sounds/death.wav" id="9_04edr"]
+[ext_resource type="AudioStream" uid="uid://bmbnme8vwmigw" path="res://sounds/pickup.wav" id="10_gt4yp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rs1lq"]
 atlas = ExtResource("2_nkul8")
@@ -208,6 +209,14 @@ stream = ExtResource("9_04edr")
 one_shot = true
 
 [node name="Restart Timer" type="Timer" parent="."]
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_gt4yp")
+pitch_scale = 0.58
+
+[node name="drop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_gt4yp")
+pitch_scale = 0.4
 
 [connection signal="timeout" from="Death Timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="Restart Timer" to="." method="_on_restart_timer_timeout"]

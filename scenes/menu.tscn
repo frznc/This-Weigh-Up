@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfnnykvtcnynm"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_4rc6h"]
+[ext_resource type="Texture2D" uid="uid://rxaua5u2gx6h" path="res://textures/logo.png" id="1_47wah"]
+[ext_resource type="PackedScene" uid="uid://b7uql0tx5kmb7" path="res://scenes/levels/l1.tscn" id="2_a1dwg"]
+[ext_resource type="Theme" uid="uid://da6ednpdx62ww" path="res://theme.tres" id="3_iotbw"]
+[ext_resource type="PackedScene" uid="uid://yuw15pr1pj53" path="res://scenes/pause.tscn" id="4_4ceiw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1i4yx"]
+bounce = 0.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44dbh"]
+size = Vector2(127, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7to8"]
+size = Vector2(171, 8)
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_4rc6h")
+first_level = ExtResource("2_a1dwg")
+
+[node name="Logo Body" type="RigidBody2D" parent="."]
+position = Vector2(85, -64)
+physics_material_override = SubResource("PhysicsMaterial_1i4yx")
+
+[node name="Logo" type="Sprite2D" parent="Logo Body"]
+texture = ExtResource("1_47wah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logo Body"]
+position = Vector2(-0.5, 16)
+shape = SubResource("RectangleShape2D_44dbh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(86, 153)
+shape = SubResource("RectangleShape2D_e7to8")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 5.0
+offset_top = 19.0
+offset_right = 55.0
+offset_bottom = 35.0
+theme = ExtResource("3_iotbw")
+text = "Play"
+
+[node name="Options" type="Button" parent="."]
+offset_left = 60.0
+offset_top = 19.0
+offset_right = 111.0
+offset_bottom = 35.0
+theme = ExtResource("3_iotbw")
+text = "Options
+"
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 116.0
+offset_top = 19.0
+offset_right = 166.0
+offset_bottom = 35.0
+theme = ExtResource("3_iotbw")
+text = "Exit
+"
+
+[node name="Pause" parent="." instance=ExtResource("4_4ceiw")]
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
