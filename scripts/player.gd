@@ -6,10 +6,7 @@ const DEF_JUMP_VELOCITY = -175.0 # unchanging base jump vel
 var speed = 80.0
 var jump_velocity = -175.0
 
-var death_time = 1
 var too_heavy = false
-var restart_time = 1
-
 
 var jumping = false
 var coyote_time = 0.06
@@ -17,7 +14,7 @@ var jump_available = true
 
 var enable_physics = true
 
-var weight_mult = 4 # Amount Global.weight impacts jump height and speed.
+var weight_mult = 4 # Amount that a weight impacts jump height and speed.
 
 @onready var weight_obj = preload("res://scenes/objects/weight.tscn")
 @onready var weightstack_obj = preload("res://scenes/weight_stack.tscn")
@@ -25,6 +22,9 @@ var weight_mult = 4 # Amount Global.weight impacts jump height and speed.
 @onready var hands = $hands
 @onready var sprite = $sprite
 @onready var particle_crushed = $"Crushed Particles"
+
+@onready var death_timer = $"Death Timer"
+@onready var restart_timer = $"Restart Timer"
 
 func _ready() -> void:
 	pass
@@ -42,27 +42,42 @@ func _physics_process(delta: float) -> void:
 	
 	## Drop weights
 	if Input.is_action_just_pressed("drop") and Global.held_weights != [] and Global.can_move:
-		var top_weight_pos = Global.held_weights.size() - 1 # Get the position of the top weight
-		var weight_to_drop = Global.held_weights.pop_at(top_weight_pos) # Get value of top weight
-		print(weight_to_drop)
-		var weight_to_spawn = weight_to_drop # we will re-spawn the Global.weight that is being dropped :)
-		Global.held_weights.remove_at(top_weight_pos) # Remove Global.weight from array.
-		update_weight()
-		
-		## Global.weight is now removed from the player. Place it back to the world
-		var instance = weight_obj.instantiate() # Create new Global.weight object
-		instance.weight_value = str(weight_to_spawn) # Set the weight
-		instance.position = position + Vector2(0,(top_weight_pos * -8) - 8) # Set position to top stack position
-		get_parent().add_child(instance) # Add Global.weight to world
-		#refresh_collisionshape()
+		drop_weight(false)
 		
 	# Restart Level
 	if Input.is_action_just_pressed("restart"):
+		death_timer.stop()
+		restart_timer.stop()
 		Global.restart_level()
 	
 	debug()
 	move_and_slide()
 
+
+func drop_weight(all : bool):
+	# How many weights are we dropping?
+	var num_to_remove = 1
+	if all:
+		num_to_remove = Global.held_weights.size()
+	
+	while num_to_remove > 0:
+		var top_weight_pos = Global.held_weights.size() - 1 # Get the position of the top weight
+		var weight_to_drop = Global.held_weights.pop_at(top_weight_pos) # Get value of top weight
+		var weight_to_spawn = weight_to_drop # we will re-spawn the weight that is being dropped :)
+		Global.held_weights.remove_at(top_weight_pos) # Remove weight from array.
+		update_weight()
+		
+		## Weight is now removed from the player. Place it back to the world
+		var instance = weight_obj.instantiate() # Create new weight object
+		instance.weight_value = str(weight_to_spawn) # Set the weight
+		# If all the weights are being dropped (upon death), place them in their stack pos. Otherwise place at player
+		if all:
+			instance.position = position + Vector2(0,(top_weight_pos * -8) - 8) # Set position to top stack position
+		else:
+			instance.position = position + Vector2(0,0) # Set position to player's position (plus an offset if needed)
+		get_parent().add_child(instance) # Add weight to world
+		
+		num_to_remove -= 1
 
 func run_physics(delta):
 	# Gravity
@@ -93,7 +108,7 @@ func coyote_timeout():
 	jump_available = false
 
 
-func update_weight(): # Update current player Global.weight based on the 'inventory'
+func update_weight(): # Update current player weight based on the 'inventory'
 	Global.weight = 0
 	jump_velocity = DEF_JUMP_VELOCITY
 	speed = DEF_SPEED
@@ -118,18 +133,30 @@ func update_weight(): # Update current player Global.weight based on the 'invent
 		too_heavy = true
 		Global.can_move = false
 		Global.weight = 21 # Kinda silly but this is done so the dial in the UI doesnt look weird
-		get_tree().create_timer(death_time).timeout.connect(die) # NOTE: If you restart the level before this is done, it can still activate and restart it again. Need to fix
+		death_timer.start()
 		$crush.play()
 
+
+func _on_death_timer_timeout() -> void:
+	die()
+
+
 func die():
+	$death.play()
+	#drop_weight(true)
 	Global.can_move = false
 	enable_physics = false
 	Global.heaviness = 7
+	hands.visible = false
 	sprite.visible = false
 	particle_crushed.emitting = true
-	get_tree().create_timer(restart_time).timeout.connect(Global.restart_level)
-	$death.play()
 	hands.visible = false
+	restart_timer.start()
+
+
+func _on_restart_timer_timeout() -> void:
+	Global.restart_level()
+
 
 func add_to_weightstack(weight): # Called when picking up a weight. Creates the visual
 	var instance = weightstack_obj.instantiate()

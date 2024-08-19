@@ -14,6 +14,7 @@ func restart_level():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
+
 func reset_globals():
 	weight = 0
 	heaviness = 0

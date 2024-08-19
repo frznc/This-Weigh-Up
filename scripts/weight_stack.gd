@@ -30,4 +30,3 @@ func _process(delta: float) -> void:
 	
 	# set above player position, lerp, idk a lot of bull Shit
 	global_position = global_position.lerp(player.global_position+Vector2(1, 2)+Vector2(0, id * -8)+Vector2(0, Global.heaviness),delta * 30 / id)
-	

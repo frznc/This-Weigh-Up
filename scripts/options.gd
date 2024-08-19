@@ -3,15 +3,16 @@ extends Node
 const PATH = "user://options.dat"
 
 ## DEFAULTS
-var version = 1 # Increment by 1 any time you add new settings
+var version = 2 # Increment by 1 any time you add new settings
 var data = {
 	"sens": 1,
-	"volume": 0,
-	"brightness": 1.0,
+	"volume": 0
 }
+
 
 func _ready():
 	load_data()
+
 
 func save_data():
 	print("saving")
@@ -19,6 +20,7 @@ func save_data():
 	file.store_var(version)
 	file.store_var(data)
 	file.close()
+
 
 func load_data():
 	# Check to see if data exists
@@ -31,7 +33,7 @@ func load_data():
 		if (file_version < version):
 			var old_data = file.get_var()
 			for key in old_data:
-				if data[key] != null:
+				if data.has(key):
 					data[key] = old_data[key]
 		# Otherwise, just load data
 		else:

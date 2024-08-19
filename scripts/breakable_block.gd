@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 	if player_inside and weight_limit <= Global.weight and sprite.visible:
 		switch_state()
 
+
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		player_inside = true

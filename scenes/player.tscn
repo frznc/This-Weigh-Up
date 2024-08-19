@@ -203,3 +203,11 @@ stream = ExtResource("8_v0odt")
 
 [node name="death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_04edr")
+
+[node name="Death Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Restart Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Death Timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Restart Timer" to="." method="_on_restart_timer_timeout"]
