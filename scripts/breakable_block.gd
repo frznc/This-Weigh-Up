@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 @export_range(1, 3) var size : int = 1

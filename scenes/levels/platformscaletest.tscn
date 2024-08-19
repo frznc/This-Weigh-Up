@@ -1,60 +1,60 @@
 [gd_scene load_steps=10 format=4 uid="uid://bdtu5xpxxothe"]
 
-[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/player.tscn" id="1_ymnff"]
-[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/endpoint.tscn" id="2_64sg6"]
-[ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="3_cjty8"]
-[ext_resource type="PackedScene" uid="uid://bindbnw1e5ak8" path="res://scenes/objects/spike.tscn" id="4_2ysii"]
-[ext_resource type="PackedScene" uid="uid://bkeecx2y2crjl" path="res://scenes/objects/saw.tscn" id="5_2um06"]
-[ext_resource type="PackedScene" uid="uid://bnpgc8mvt70i3" path="res://scenes/objects/breakable_block.tscn" id="6_d3kj0"]
-[ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="7_vyjap"]
-[ext_resource type="PackedScene" uid="uid://3cmjaiun7hux" path="res://scenes/objects/platform_scale.tscn" id="8_4daiv"]
-[ext_resource type="PackedScene" uid="uid://ul5vt7t6vjq5" path="res://scenes/objects/stand_scale.tscn" id="8_ouolt"]
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/player.tscn" id="1_rtekc"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/endpoint.tscn" id="2_xkqlx"]
+[ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="3_pfoc3"]
+[ext_resource type="PackedScene" uid="uid://bindbnw1e5ak8" path="res://scenes/objects/spike.tscn" id="4_p7iht"]
+[ext_resource type="PackedScene" uid="uid://bkeecx2y2crjl" path="res://scenes/objects/saw.tscn" id="5_f5sku"]
+[ext_resource type="PackedScene" uid="uid://bnpgc8mvt70i3" path="res://scenes/objects/breakable_block.tscn" id="6_7ihag"]
+[ext_resource type="PackedScene" uid="uid://ul5vt7t6vjq5" path="res://scenes/objects/stand_scale.tscn" id="7_1dtwd"]
+[ext_resource type="PackedScene" uid="uid://3cmjaiun7hux" path="res://scenes/objects/platform_scale.tscn" id="8_yqfsy"]
+[ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="9_lf0sf"]
 
 [node name="L2" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource("1_ymnff")]
+[node name="player" parent="." instance=ExtResource("1_rtekc")]
 position = Vector2(-32, -23)
 
-[node name="Endpoint" parent="." instance=ExtResource("2_64sg6")]
+[node name="Endpoint" parent="." instance=ExtResource("2_xkqlx")]
 position = Vector2(-76, -4)
 
 [node name="tilemap1" type="TileMapLayer" parent="."]
 use_parent_material = true
 tile_map_data = PackedByteArray("AADy/wAAAAAAAAAAAADz/wAAAAABAAAAAAD0/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAADAAAAAADw/wAAAAAAAAAAAADu/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD+/wAAAAAAAAAAAADv/wAAAAABAAAAAAD3/wAAAAABAAAAAAD7/wAAAAABAAAAAADx/wAAAAADAAAAAAD5/wAAAAADAAAAAAD9/wAAAAADAAAAAADq/wEAAAAAAAAAAADp/wEAAAAAAAAAAADo/wEAAAAAAAAAAADn/wEAAAAAAAAAAADm/wEAAAAAAAAAAADl/wEAAAAAAAAAAADk/wEAAAAAAAAAAADu/wEAAAAAAAAAAADt/wEAAAAAAAAAAADs/wEAAAAAAAAAAADr/wEAAAAAAAAAAADj/wEAAAAAAAAAAADi/wEAAAAAAAAAAADg/wAAAAACAAAAAADs/wAAAAACAAAAAADp/wAAAAACAAAAAADl/wAAAAACAAAAAADh/wEAAAAAAAAAAADg/wEAAAAAAAAAAADf/wAAAAAAAAAAAADf/wEAAAAAAAAAAADe/wEAAAAAAAAAAADd/wEAAAAAAAAAAADe/wAAAAAAAAAAAADd/wAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAA=")
-tile_set = ExtResource("3_cjty8")
+tile_set = ExtResource("3_pfoc3")
 
-[node name="Spike" parent="." instance=ExtResource("4_2ysii")]
+[node name="Spike" parent="." instance=ExtResource("4_p7iht")]
 position = Vector2(76, -4)
 
-[node name="Saw" parent="." instance=ExtResource("5_2um06")]
+[node name="Saw" parent="." instance=ExtResource("5_f5sku")]
 position = Vector2(-62, -65)
 
-[node name="Breakable Block" parent="." instance=ExtResource("6_d3kj0")]
+[node name="Breakable Block" parent="." instance=ExtResource("6_7ihag")]
 position = Vector2(27, -53)
 
-[node name="Stand Scale" parent="." instance=ExtResource("8_ouolt")]
+[node name="Stand Scale" parent="." instance=ExtResource("7_1dtwd")]
 z_index = 100
 z_as_relative = false
 position = Vector2(-48, -16)
 
-[node name="Platform Scale" parent="." instance=ExtResource("8_4daiv")]
+[node name="Platform Scale" parent="." instance=ExtResource("8_yqfsy")]
 position = Vector2(4, 4)
 
-[node name="Platform Scale" parent="Platform Scale" instance=ExtResource("8_4daiv")]
+[node name="Platform Scale" parent="Platform Scale" instance=ExtResource("8_yqfsy")]
 position = Vector2(40, 0)
 
-[node name="weight2" parent="." instance=ExtResource("7_vyjap")]
+[node name="weight2" parent="." instance=ExtResource("9_lf0sf")]
 position = Vector2(20, -4)
 weight_value = 1
 
-[node name="weight3" parent="." instance=ExtResource("7_vyjap")]
+[node name="weight3" parent="." instance=ExtResource("9_lf0sf")]
 position = Vector2(28, -4)
 weight_value = 2
 
-[node name="weight4" parent="." instance=ExtResource("7_vyjap")]
+[node name="weight4" parent="." instance=ExtResource("9_lf0sf")]
 position = Vector2(20, -12)
 weight_value = 3
 
-[node name="weight5" parent="." instance=ExtResource("7_vyjap")]
+[node name="weight5" parent="." instance=ExtResource("9_lf0sf")]
 position = Vector2(28, -12)
 weight_value = 4
