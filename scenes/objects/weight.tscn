@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://sn5tb4jk80ee"]
 
-[ext_resource type="Script" path="res://scripts/weight.gd" id="1_f2gmg"]
-[ext_resource type="SpriteFrames" uid="uid://chthrt50ci2b0" path="res://textures/weight_spriteframes.tres" id="2_urcie"]
+[ext_resource type="Script" path="res://scripts/weight.gd" id="1_3ahfn"]
+[ext_resource type="SpriteFrames" uid="uid://chthrt50ci2b0" path="res://textures/weight_spriteframes.tres" id="2_n5lvn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j480"]
 size = Vector2(12, 12.8)
@@ -15,10 +15,10 @@ collision_mask = 5
 gravity_scale = 0.5
 can_sleep = false
 lock_rotation = true
-script = ExtResource("1_f2gmg")
+script = ExtResource("1_3ahfn")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_urcie")
+sprite_frames = ExtResource("2_n5lvn")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3

@@ -14,7 +14,7 @@ func _ready() -> void:
 	else:
 		$sprite.frame = weight_value
 	global_position = player.global_position
-	z_index = id
+	z_index = 205 + id
 
 func _process(delta: float) -> void:
 	if Global.held_weights.size() < id: # If the weight's ID is larger than the size of the global stack array, it knows to die. 
@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("left") and Global.can_move:
 		current_offset = Vector2(0.2,0)
 	
-		
+	
 	# set above player position, lerp, idk a lot of bull Shit
 	global_position = global_position.lerp(player.global_position+Vector2(1, 2)+Vector2(0, id * -8)+Vector2(0, Global.heaviness),delta * 30 / id)
 	

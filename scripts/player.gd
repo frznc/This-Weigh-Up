@@ -8,18 +8,21 @@ var jump_velocity = -175.0
 
 var death_time = 1
 var too_heavy = false
-
 var restart_time = 1
+
 
 var jumping = false
 var coyote_time = 0.06
 var jump_available = true
 
+var enable_physics = true
+
 var weight_mult = 4 # Amount Global.weight impacts jump height and speed.
 
-@onready var weight_obj = preload("res://objects/weight.tscn")
+@onready var weight_obj = preload("res://scenes/objects/weight.tscn")
 @onready var weightstack_obj = preload("res://scenes/weight_stack.tscn")
 
+@onready var hands = $hands
 @onready var sprite = $sprite
 @onready var particle_crushed = $"Crushed Particles"
 
@@ -27,12 +30,15 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	run_physics(delta)
+	if enable_physics:run_physics(delta)
+	else: velocity.x = 0;velocity.y = 0
 	if Global.can_move:run_movement(delta)
-	else: velocity.x = 0
+	else: velocity.x = 0; $sprite.play("idle")
 	
 	sprite.play(str(get_player_state())) # Get current state from get_player_state then play the anim
 	# flip sprite based on dir
+	
+	position_hands(delta)
 	
 	## Drop weights
 	if Input.is_action_just_pressed("drop") and Global.held_weights != [] and Global.can_move:
@@ -46,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		## Global.weight is now removed from the player. Place it back to the world
 		var instance = weight_obj.instantiate() # Create new Global.weight object
 		instance.weight_value = str(weight_to_spawn) # Set the weight
-		instance.position = position + Vector2(0,(top_weight_pos * -8) - 9) # Set position to top stack position
+		instance.position = position + Vector2(0,(top_weight_pos * -8) - 8) # Set position to top stack position
 		get_parent().add_child(instance) # Add Global.weight to world
 		#refresh_collisionshape()
 		
@@ -97,8 +103,10 @@ func update_weight(): # Update current player Global.weight based on the 'invent
 	speed -= (Global.weight * weight_mult)
 	
 	if Global.weight > 15:
-		Global.heaviness = 2
-	elif Global.weight > 10:
+		Global.heaviness = 5
+	if Global.weight > 10:
+		Global.heaviness = 3
+	elif Global.weight > 5:
 		Global.heaviness = 1
 	else:
 		Global.heaviness = 0
@@ -111,15 +119,16 @@ func update_weight(): # Update current player Global.weight based on the 'invent
 		Global.can_move = false
 		Global.weight = 21 # Kinda silly but this is done so the dial in the UI doesnt look weird
 		get_tree().create_timer(death_time).timeout.connect(die) # NOTE: If you restart the level before this is done, it can still activate and restart it again. Need to fix
-
+		$crush.play()
 
 func die():
 	Global.can_move = false
+	enable_physics = false
 	Global.heaviness = 7
 	sprite.visible = false
 	particle_crushed.emitting = true
 	get_tree().create_timer(restart_time).timeout.connect(Global.restart_level)
-
+	$death.play()
 
 func add_to_weightstack(weight): # Called when picking up a weight. Creates the visual
 	var instance = weightstack_obj.instantiate()
@@ -136,6 +145,22 @@ func get_player_state():
 	if Input.is_action_pressed("right") || Input.is_action_pressed("left"):
 		return "walk"
 	return "idle"
+
+func position_hands(delta):
+	if Global.held_weights != []:
+		hands.frame = 0
+		hands.global_position = hands.global_position.lerp(global_position + Vector2(0,Global.heaviness),delta * 30)
+		match sprite.flip_h:
+			true:hands.global_position = hands.global_position.lerp(global_position + Vector2(3,Global.heaviness),delta * 30)
+			false:hands.global_position = hands.global_position.lerp(global_position + Vector2(1,Global.heaviness),delta * 30)
+	else:
+		hands.frame = 1
+		match sprite.flip_h:
+			true:hands.global_position = hands.global_position.lerp(global_position + Vector2(0,6),delta*80)
+			false:hands.global_position = hands.global_position.lerp(global_position + Vector2(1,6),delta*80)
+		if sprite.frame == 1:
+			hands.global_position = hands.global_position + Vector2(0,-1)
+		
 
 
 func debug(): # Debug

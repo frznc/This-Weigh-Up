@@ -2,6 +2,10 @@ extends Node2D
 
 @onready var sprite = $AnimatedSprite2D
 
+func _physics_process(delta: float) -> void:
+	$AnimatedSprite2D.rotation = $AnimatedSprite2D.rotation + deg_to_rad(9)
+
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		body.die()

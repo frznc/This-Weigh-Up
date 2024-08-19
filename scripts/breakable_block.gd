@@ -59,6 +59,7 @@ func switch_state():
 		limit_label.visible = false
 		break_particles.emitting = true
 		reset_timer.start()
+		$break.play()
 	
 	# OFF -> ON
 	else:

@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://chthrt50ci2b0" path="res://textures/weight_spriteframes.tres" id="2_sgvsk"]
 
 [node name="weight_stack" type="Node2D"]
+z_index = 205
 script = ExtResource("1_jhdfp")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

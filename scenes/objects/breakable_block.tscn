@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnpgc8mvt70i3"]
+[gd_scene load_steps=13 format=3 uid="uid://bnpgc8mvt70i3"]
 
-[ext_resource type="Script" path="res://scenes/objects/breakable_block.gd" id="1_qpcdo"]
+[ext_resource type="Script" path="res://scripts/breakable_block.gd" id="1_qpcdo"]
 [ext_resource type="Texture2D" uid="uid://bbkeadqb4hrch" path="res://textures/breakable.png" id="1_uggnc"]
 [ext_resource type="FontFile" uid="uid://bjuv3x1m38iht" path="res://textures/04B_03__.TTF" id="2_4x6tt"]
+[ext_resource type="AudioStream" uid="uid://ljao2c3i1rrt" path="res://sounds/break.wav" id="4_yls8m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfixa"]
 atlas = ExtResource("1_uggnc")
@@ -55,10 +56,12 @@ sprite_frames = SubResource("SpriteFrames_20ba5")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -4.0
-offset_top = -4.0
+offset_top = -6.0
 offset_right = 5.0
 offset_bottom = 4.0
-theme_override_colors/font_color = Color(0.621926, 0, 0.197367, 1)
+scale = Vector2(1, 1.29)
+theme_override_colors/font_color = Color(1, 0, 0.301961, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_4x6tt")
 theme_override_font_sizes/font_size = 8
 text = "0"
@@ -105,6 +108,10 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_eavge")
 color = Color(0.449111, 0.508374, 0.541999, 1)
 color_ramp = SubResource("Gradient_hku3y")
+
+[node name="break" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yls8m")
+volume_db = -7.0
 
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
