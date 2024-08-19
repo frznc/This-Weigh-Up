@@ -30,11 +30,9 @@ texture = ExtResource("2_mvkx5")
 sprite_frames = ExtResource("2_n5lvn")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_mask = 3
 
 [node name="pickup area" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(2.38419e-07, -2.4)
 shape = SubResource("RectangleShape2D_8j480")
 
@@ -43,10 +41,10 @@ visible = false
 position = Vector2(0, 3.57628e-07)
 shape = SubResource("RectangleShape2D_rerl6")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Static Weight" type="StaticBody2D" parent="."]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static Weight"]
 shape = SubResource("RectangleShape2D_eg6q1")
 one_way_collision = true
 

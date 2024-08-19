@@ -75,7 +75,8 @@ func _on_pip_tick_timeout() -> void:
 		pips[pips_lit].light_up(pips_lit)
 	if pips_lit == 9:
 		complete = true
-		endpoint.turn_on()
+		if endpoint != null:
+			endpoint.turn_on()
 		label["theme_override_colors/font_color"] = Color("00E436")
 		yay.play()
 		pip_timer.stop()

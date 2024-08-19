@@ -33,10 +33,11 @@ position = Vector2(-62, -65)
 position = Vector2(27, -53)
 size = 0
 
-[node name="Stand Scale" parent="." instance=ExtResource("7_1dtwd")]
+[node name="Stand Scale" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("7_1dtwd")]
 z_index = 100
 z_as_relative = false
 position = Vector2(-48, -16)
+endpoint = NodePath("../Endpoint")
 
 [node name="Platform Scale" parent="." node_paths=PackedStringArray("compare_scale") instance=ExtResource("8_yqfsy")]
 position = Vector2(4, 4)
@@ -52,16 +53,16 @@ min = -5
 
 [node name="weight2" parent="." instance=ExtResource("9_lf0sf")]
 position = Vector2(20, -4)
-weight_value = 1
+weight_value = 5
 
 [node name="weight3" parent="." instance=ExtResource("9_lf0sf")]
 position = Vector2(28, -4)
-weight_value = 2
+weight_value = 5
 
 [node name="weight4" parent="." instance=ExtResource("9_lf0sf")]
 position = Vector2(20, -12)
-weight_value = 3
+weight_value = 5
 
 [node name="weight5" parent="." instance=ExtResource("9_lf0sf")]
 position = Vector2(28, -12)
-weight_value = 4
+weight_value = 5

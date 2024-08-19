@@ -10,7 +10,7 @@
 size = Vector2(24, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hjxr"]
-size = Vector2(14, 2)
+size = Vector2(16, 2)
 
 [node name="Platform Scale" type="Node2D"]
 script = ExtResource("1_5ynsy")
@@ -18,22 +18,7 @@ script = ExtResource("1_5ynsy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7qiu6")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-shape = SubResource("RectangleShape2D_8xcd0")
-
-[node name="Area2D" type="Area2D" parent="Sprite2D/StaticBody2D"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D/Area2D"]
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_2hjxr")
-
-[node name="Label" type="Label" parent="Sprite2D/StaticBody2D"]
+[node name="Label" type="Label" parent="Sprite2D"]
 offset_left = -4.0
 offset_top = -5.0
 offset_right = 5.0
@@ -47,6 +32,21 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Static Hitbox" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Static Hitbox"]
+shape = SubResource("RectangleShape2D_8xcd0")
+
+[node name="Player Check" type="Area2D" parent="Sprite2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Player Check"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_2hjxr")
+
 [node name="Max Point" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("4_qjcqe")
@@ -55,5 +55,10 @@ texture = ExtResource("4_qjcqe")
 position = Vector2(0, 8)
 texture = ExtResource("5_qalc3")
 
-[connection signal="body_entered" from="Sprite2D/StaticBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Sprite2D/StaticBody2D/Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Movement Timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[connection signal="body_entered" from="Sprite2D/Player Check" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Sprite2D/Player Check" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Movement Timer" to="." method="_on_movement_timer_timeout"]
