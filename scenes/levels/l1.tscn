@@ -30,6 +30,7 @@ position = Vector2(-12, -41)
 
 [node name="Breakable Block" parent="." instance=ExtResource("7_073vg")]
 position = Vector2(4, -28)
+size = 3
 
 [node name="weight" parent="." instance=ExtResource("3_fa7pu")]
 position = Vector2(-28, -4)
