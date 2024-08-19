@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://sn5tb4jk80ee"]
+[gd_scene load_steps=6 format=3 uid="uid://sn5tb4jk80ee"]
 
 [ext_resource type="Script" path="res://scripts/weight.gd" id="1_3ahfn"]
 [ext_resource type="SpriteFrames" uid="uid://chthrt50ci2b0" path="res://textures/weight_spriteframes.tres" id="2_n5lvn"]
+[ext_resource type="AudioStream" uid="uid://bmbnme8vwmigw" path="res://sounds/pickup.wav" id="3_n1cuv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j480"]
 size = Vector2(12, 12.8)
@@ -30,6 +31,10 @@ shape = SubResource("RectangleShape2D_8j480")
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.57628e-07)
 shape = SubResource("RectangleShape2D_rerl6")
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_n1cuv")
+pitch_scale = 0.58
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
