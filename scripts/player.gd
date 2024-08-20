@@ -34,7 +34,8 @@ var closest_distance = INF
 @onready var restart_timer = $"Restart Timer"
 
 func _ready() -> void:
-	pass
+	if Music.musicplaying == false:
+		Music.playmusic()
 
 func _physics_process(delta: float) -> void:
 	if enable_physics:run_physics(delta)

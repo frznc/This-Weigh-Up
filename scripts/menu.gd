@@ -2,6 +2,7 @@ extends Node2D
 
 @export var first_level : PackedScene
 
+@onready var level_select = preload("res://scenes/levelselect.tscn")
 @onready var pause_menu : Control = get_tree().current_scene.get_node("Pause")
 @onready var puff : CPUParticles2D = $"Logo Body/Puff"
 @onready var thud : AudioStreamPlayer2D = $thud
@@ -17,7 +18,7 @@ func _process(delta: float) -> void:
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_packed(first_level)
+	get_tree().change_scene_to_packed(level_select)
 
 
 func _on_options_pressed() -> void:

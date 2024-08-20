@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2024"
-run/main_scene="res://scenes/levels/lv1.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.164874, 0.173119, 0.222863, 1)
 config/icon="res://textures/icon.svg"
@@ -20,6 +20,7 @@ config/icon="res://textures/icon.svg"
 
 Global="*res://scripts/Global.gd"
 Options="*res://scripts/options.gd"
+Music="*res://scenes/music.tscn"
 
 [display]
 
@@ -79,5 +80,5 @@ restart={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.240447, 0.251343, 0.316836, 1)
+environment/defaults/default_clear_color=Color(0.113725, 0.168627, 0.32549, 1)
 2d/snap/snap_2d_transforms_to_pixel=true

@@ -74,6 +74,7 @@ offset_left = 5.0
 offset_top = 19.0
 offset_right = 55.0
 offset_bottom = 35.0
+focus_mode = 0
 theme = ExtResource("3_iotbw")
 text = "Play"
 
@@ -82,6 +83,7 @@ offset_left = 60.0
 offset_top = 19.0
 offset_right = 111.0
 offset_bottom = 35.0
+focus_mode = 0
 theme = ExtResource("3_iotbw")
 text = "Options
 "
@@ -91,6 +93,7 @@ offset_left = 116.0
 offset_top = 19.0
 offset_right = 166.0
 offset_bottom = 35.0
+focus_mode = 0
 theme = ExtResource("3_iotbw")
 text = "Exit
 "
