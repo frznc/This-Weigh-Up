@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=4 uid="uid://bydrjwpl813k"]
+
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_4alx3"]
+[ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_oenl4"]
+[ext_resource type="PackedScene" uid="uid://ul5vt7t6vjq5" path="res://scenes/objects/stand_scale.tscn" id="3_lhg80"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/objects/endpoint.tscn" id="4_jurvk"]
+[ext_resource type="PackedScene" uid="uid://cp7wxkb5t1slb" path="res://scenes/levels/lv7.tscn" id="5_0y5l5"]
+[ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="6_g08rk"]
+[ext_resource type="PackedScene" uid="uid://35n3wcfappjx" path="res://scenes/objects/confine.tscn" id="7_v0shq"]
+[ext_resource type="PackedScene" uid="uid://bnpgc8mvt70i3" path="res://scenes/objects/breakable_block.tscn" id="8_rh6le"]
+
+[node name="Level" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_4alx3")]
+position = Vector2(32, 4)
+
+[node name="tilemap1" type="TileMapLayer" parent="."]
+use_parent_material = true
+position = Vector2(0, 8)
+tile_map_data = PackedByteArray("AAAAAP7/AAAEAAgAAAAAAP//AAAEAAgAAAAAAAAAAAAEAAgAAAAAAAEAAAAEAAgAAAAAAAIAAAAEAAgAAAAAAAMAAAAEAAgAAAAAAAQAAAAEAAgAAAAAAAUAAAAEAAgAAAABAP//AAAAAAAAAAABAAAAAAAAAAoAAAABAAEAAAAAAAsAAAABAAIAAAAAAAsAAAABAAMAAAAAAAsAAAABAAQAAAAAAAsAAAABAAUAAAAAAAsAAAACAAAAAAABAAoAAAACAAEAAAABAAcAAAACAAIAAAABAAcAAAACAAMAAAABAAcAAAACAAQAAAABAAcAAAACAAUAAAABAAcAAAADAAAAAAABAAoAAAADAAEAAAABAAcAAAADAAIAAAABAAcAAAADAAMAAAABAAcAAAADAAQAAAABAAcAAAADAAUAAAABAAcAAAAEAPn/AAAAAAUAAAAEAAAAAAABAAoAAAAEAAEAAAABAAcAAAAEAAIAAAABAAcAAAAEAAMAAAABAAcAAAAEAAQAAAABAAcAAAAEAAUAAAABAAcAAAAFAPn/AAABAAUAAAAFAAAAAAABAAoAAAAFAAEAAAABAAcAAAAFAAIAAAABAAcAAAAFAAMAAAABAAcAAAAFAAQAAAABAAcAAAAFAAUAAAABAAcAAAAGAPn/AAABAAUAAAAGAAEAAAACAAsAAAAGAAIAAAACAAsAAAAGAAMAAAACAAsAAAAGAAQAAAACAAsAAAAGAAUAAAACAAsAAAAHAPn/AAABAAUAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAIAAAAIAPn/AAABAAUAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAABAAIAAAAJAPn/AAABAAUAAAAJAAQAAAAAAAAAAAAJAAUAAAABAAIAAAAKAPn/AAABAAUAAAAKAAUAAAABAAIAAAALAPn/AAABAAUAAAALAAUAAAABAAIAAAAMAPn/AAABAAUAAAAMAAUAAAABAAIAAAANAPn/AAABAAUAAAANAAUAAAABAAIAAAAOAPn/AAABAAUAAAAOAAUAAAABAAIAAAAPAPn/AAABAAUAAAAPAAUAAAABAAIAAAAAAPP/AAAEAAgAAAAAAPT/AAAEAAgAAAAAAPX/AAAEAAgAAAAAAPb/AAAEAAgAAAAAAPf/AAAEAAgAAAAAAPj/AAAEAAgAAAAAAPn/AAAEAAgAAAAAAPr/AAAEAAgAAAAAAPv/AAAEAAgAAAAAAPz/AAAEAAgAAAAAAP3/AAAEAAgAAAABAP7/AAAAAAAAAAACAP//AAAAAAAAAAAGAAAAAAACAAoAAAAHAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAATAAAAAAAAAAoAAAATAAEAAAAAAAsAAAATAAIAAAAAAAsAAAATAAMAAAAAAAsAAAATAAQAAAAAAAsAAAATAAUAAAAAAAsAAAAUAAAAAAABAAoAAAAUAAEAAAABAAcAAAAUAAIAAAABAAcAAAAUAAMAAAABAAcAAAAUAAQAAAABAAcAAAAUAAUAAAABAAcAAAAVAAAAAAABAAoAAAAVAAEAAAABAAcAAAAVAAIAAAABAAcAAAAVAAMAAAABAAcAAAAVAAQAAAABAAcAAAAVAAUAAAABAAcAAAAWAAAAAAABAAoAAAAWAAEAAAABAAcAAAAWAAIAAAABAAcAAAAWAAMAAAABAAcAAAAWAAQAAAABAAcAAAAWAAUAAAABAAcAAAATAPn/AAABAAUAAAAUAPn/AAABAAUAAAAVAPn/AAACAAUAAAAXAAAAAAABAAoAAAAXAAEAAAABAAcAAAAXAAIAAAABAAcAAAAXAAMAAAABAAcAAAAXAAQAAAABAAcAAAAXAAUAAAABAAcAAAAYAAAAAAACAAoAAAAYAAEAAAACAAsAAAAYAAIAAAACAAsAAAAYAAMAAAACAAsAAAAYAAQAAAACAAsAAAAYAAUAAAACAAsAAAAZAPP/AAAEAAgAAAAZAPT/AAAEAAgAAAAZAPX/AAAEAAgAAAAZAPb/AAAEAAgAAAAZAPf/AAAEAAgAAAAZAPj/AAAEAAgAAAAZAPn/AAAEAAgAAAAZAPr/AAAEAAgAAAAZAPv/AAAEAAgAAAAZAPz/AAAEAAgAAAAZAP3/AAAEAAgAAAAZAP7/AAAEAAgAAAAZAP//AAAEAAgAAAAZAAAAAAAEAAgAAAAZAAEAAAAEAAgAAAAZAAIAAAAEAAgAAAAZAAMAAAAEAAgAAAAZAAQAAAAEAAgAAAAZAAUAAAAEAAgAAAASAPn/AAABAAUAAAARAPn/AAABAAUAAAAQAPn/AAABAAUAAAARAAUAAAABAAIAAAAQAAUAAAABAAIAAAASAAUAAAACAAIAAAA=")
+tile_set = ExtResource("2_oenl4")
+
+[node name="Stand Scale" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("3_lhg80")]
+position = Vector2(184, -8)
+weight_needed = 5
+endpoint = NodePath("../Endpoint")
+
+[node name="Endpoint" parent="." instance=ExtResource("4_jurvk")]
+position = Vector2(160, 4)
+next_level = ExtResource("5_0y5l5")
+
+[node name="weight" parent="." instance=ExtResource("6_g08rk")]
+position = Vector2(44, 4)
+weight_value = 5
+
+[node name="Confine" parent="." instance=ExtResource("7_v0shq")]
+position = Vector2(212, 52)
+
+[node name="Breakable Block2" parent="." instance=ExtResource("8_rh6le")]
+position = Vector2(92, 12)
+size = 3
+weight_limit = 10
+
+[node name="Breakable Block3" parent="." instance=ExtResource("8_rh6le")]
+position = Vector2(116, 12)
+size = 3
+weight_limit = 5
+
+[node name="weight2" parent="." instance=ExtResource("6_g08rk")]
+position = Vector2(160, -4)
+
+[node name="weight3" parent="." instance=ExtResource("6_g08rk")]
+position = Vector2(160, 4)
+
+[node name="weight4" parent="." instance=ExtResource("6_g08rk")]
+position = Vector2(12, -12)
+
+[node name="weight5" parent="." instance=ExtResource("6_g08rk")]
+position = Vector2(12, -20)
+
+[node name="Breakable Block4" parent="." instance=ExtResource("8_rh6le")]
+position = Vector2(140, 12)
+size = 3
+weight_limit = 5

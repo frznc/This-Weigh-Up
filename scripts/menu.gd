@@ -9,6 +9,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Music.stopmusic()
 	pass # Replace with function body.
 
 
@@ -18,7 +19,7 @@ func _process(delta: float) -> void:
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_packed(level_select)
+	get_tree().change_scene_to_packed(first_level)
 
 
 func _on_options_pressed() -> void:

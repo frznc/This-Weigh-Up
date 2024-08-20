@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0fbdnuurkjbj"]
 
 [ext_resource type="Theme" uid="uid://da6ednpdx62ww" path="res://theme.tres" id="1_hlwde"]
-[ext_resource type="Script" path="res://scenes/levelselect.gd" id="2_yrnv0"]
+[ext_resource type="Script" path="res://scripts/levelselect.gd" id="2_yrnv0"]
 
 [node name="levelselect" type="Control"]
 layout_mode = 3

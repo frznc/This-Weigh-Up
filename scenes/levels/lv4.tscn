@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=4 uid="uid://c8hsf2ar3ichn"]
+
+[ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_0ndyw"]
+[ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_m4xcc"]
+[ext_resource type="PackedScene" uid="uid://ul5vt7t6vjq5" path="res://scenes/objects/stand_scale.tscn" id="3_7lx12"]
+[ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/objects/endpoint.tscn" id="4_yygq6"]
+[ext_resource type="PackedScene" uid="uid://i7p2h8qtpyku" path="res://scenes/levels/lv5.tscn" id="5_jstl3"]
+[ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="6_xkw8w"]
+[ext_resource type="PackedScene" uid="uid://35n3wcfappjx" path="res://scenes/objects/confine.tscn" id="7_kb5hh"]
+
+[node name="Level" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_0ndyw")]
+position = Vector2(28, 27)
+
+[node name="tilemap1" type="TileMapLayer" parent="."]
+use_parent_material = true
+position = Vector2(0, 8)
+tile_map_data = PackedByteArray("AAAAAAIAAAABAAUAAGAAAAEAAAABAAUAAGAAAAAAAAABAAUAAGAAAP//AAABAAUAAGAAAP7/AAABAAUAAGAAAP3/AAABAAUAAGAAAPz/AAABAAUAAGAAAPv/AAABAAUAAGAAAPr/AAABAAUAAGAAAPn/AAABAAUAAGAAAPj/AAABAAUAAGAUAAIAAAABAAUAAGAUAAEAAAABAAUAAGAUAAAAAAABAAUAAGAUAP//AAABAAUAAGAUAP7/AAABAAUAAGAUAP3/AAABAAUAAGAUAPz/AAABAAUAAGAUAPv/AAABAAUAAGAUAPr/AAABAAUAAGAUAPn/AAABAAUAAGAUAPj/AAABAAUAAGAOAAMAAAABAAoAAAAAAAMAAAAAAAoAAAAUAAMAAAACAAoAAAATAAMAAAABAAoAAAASAAMAAAABAAoAAAARAAMAAAABAAoAAAAQAAMAAAABAAoAAAAPAAMAAAABAAoAAAANAAMAAAABAAoAAAAMAAMAAAABAAoAAAALAAMAAAABAAoAAAAKAAMAAAABAAoAAAAJAAMAAAABAAoAAAAIAAMAAAABAAoAAAAHAAMAAAABAAoAAAAGAAMAAAABAAoAAAAFAAMAAAABAAoAAAAEAAMAAAABAAoAAAADAAMAAAABAAoAAAACAAMAAAABAAoAAAABAAMAAAABAAoAAAAAAAQAAAAAAAsAAAAAAAUAAAAAAAsAAAAUAAQAAAACAAsAAAAUAAUAAAACAAsAAAACAAQAAAABAAcAAAADAAQAAAABAAcAAAAEAAQAAAABAAcAAAACAAUAAAABAAcAAAADAAUAAAABAAcAAAAEAAUAAAABAAcAAAAFAAUAAAABAAcAAAAGAAUAAAABAAcAAAAHAAUAAAABAAcAAAAIAAUAAAABAAcAAAAJAAUAAAABAAcAAAAKAAUAAAABAAcAAAALAAUAAAABAAcAAAAMAAUAAAABAAcAAAANAAUAAAABAAcAAAAOAAUAAAABAAcAAAAPAAUAAAABAAcAAAAQAAUAAAABAAcAAAARAAUAAAABAAcAAAASAAUAAAABAAcAAAATAAUAAAABAAcAAAATAAQAAAABAAcAAAASAAQAAAABAAcAAAARAAQAAAABAAcAAAAQAAQAAAABAAcAAAAPAAQAAAABAAcAAAAOAAQAAAABAAcAAAANAAQAAAABAAcAAAAMAAQAAAABAAcAAAALAAQAAAABAAcAAAAKAAQAAAABAAcAAAAJAAQAAAABAAcAAAAIAAQAAAABAAcAAAAHAAQAAAABAAcAAAAGAAQAAAABAAcAAAAFAAQAAAABAAcAAAABAAQAAAABAAcAAAABAAUAAAABAAcAAAAAAPX/AAABAAUAAGAAAPb/AAABAAUAAGAUAPX/AAABAAUAAGAUAPb/AAABAAUAAGAAAPf/AAABAAUAAGAUAPf/AAABAAUAAGAAAPP/AAAAAAcAAAAAAPT/AAAAAAgAAAABAPP/AAABAAcAAAABAPT/AAABAAgAAAACAPP/AAABAAcAAAACAPT/AAABAAgAAAADAPP/AAABAAcAAAADAPT/AAABAAgAAAAEAPP/AAABAAcAAAAEAPT/AAABAAgAAAAFAPP/AAABAAcAAAAFAPT/AAABAAgAAAAGAPP/AAABAAcAAAAGAPT/AAABAAgAAAAHAPP/AAABAAcAAAAHAPT/AAABAAgAAAAIAPP/AAABAAcAAAAIAPT/AAABAAgAAAAJAPP/AAABAAcAAAAJAPT/AAABAAgAAAAKAPP/AAABAAcAAAAKAPT/AAABAAgAAAALAPP/AAABAAcAAAALAPT/AAABAAgAAAAMAPP/AAABAAcAAAAMAPT/AAABAAgAAAANAPP/AAABAAcAAAANAPT/AAABAAgAAAAOAPP/AAABAAcAAAAOAPT/AAABAAgAAAAPAPP/AAABAAcAAAAPAPT/AAABAAgAAAAQAPP/AAABAAcAAAAQAPT/AAABAAgAAAARAPP/AAABAAcAAAARAPT/AAABAAgAAAASAPP/AAABAAcAAAASAPT/AAABAAgAAAATAPP/AAABAAcAAAATAPT/AAABAAgAAAAUAPP/AAACAAcAAAAUAPT/AAACAAgAAAAMAPr/AAAAAAUAAAANAPr/AAABAAUAAAAOAPr/AAABAAUAAAAPAPr/AAABAAUAAAAQAPr/AAABAAUAAAARAPr/AAABAAUAAAASAPr/AAABAAUAAAATAPr/AAABAAUAAAAFAPz/AAABAAUAAAAEAPz/AAABAAUAAAADAPz/AAABAAUAAAACAPz/AAABAAUAAAABAPz/AAABAAUAAAAGAPz/AAACAAUAAAA=")
+tile_set = ExtResource("2_m4xcc")
+
+[node name="Stand Scale" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("3_7lx12")]
+position = Vector2(119.632, -56.2088)
+weight_needed = 6
+endpoint = NodePath("../Endpoint")
+
+[node name="Endpoint" parent="." instance=ExtResource("4_yygq6")]
+position = Vector2(148, -44.1037)
+next_level = ExtResource("5_jstl3")
+
+[node name="Confine" parent="." instance=ExtResource("7_kb5hh")]
+position = Vector2(172, 52)
+
+[node name="weight" parent="." instance=ExtResource("6_xkw8w")]
+position = Vector2(81, 28)
+weight_value = 6
+
+[node name="weight2" parent="." instance=ExtResource("6_xkw8w")]
+position = Vector2(81, 20)
+weight_value = 6
+
+[node name="weight4" parent="." instance=ExtResource("6_xkw8w")]
+position = Vector2(36, -28)
+weight_value = 6
+
+[node name="weight5" parent="." instance=ExtResource("6_xkw8w")]
+position = Vector2(92, 28)
+weight_value = 6
+
+[node name="weight6" parent="." instance=ExtResource("6_xkw8w")]
+position = Vector2(96, 20)
+weight_value = 6
+
+[node name="weight8" parent="." instance=ExtResource("6_xkw8w")]
+position = Vector2(24, -28)
+weight_value = 6
+
+[node name="weight9" parent="." instance=ExtResource("6_xkw8w")]
+position = Vector2(100, 28)
+weight_value = 6
+
+[node name="weight10" parent="." instance=ExtResource("6_xkw8w")]
+position = Vector2(64, 28)
+weight_value = 6
+
+[node name="weight11" parent="." instance=ExtResource("6_xkw8w")]
+position = Vector2(36, -36)
+weight_value = 6

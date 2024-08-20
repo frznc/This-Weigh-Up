@@ -1,13 +1,15 @@
 extends Node2D
 
 @export var next_level : PackedScene
+@export var inital_on : bool = false
 
 @onready var hitbox = $Area2D
 
 func _ready():
-	visible = false
-	hitbox.collision_layer = 0
-	hitbox.collision_mask = 0
+	if !inital_on:
+		visible = false
+		hitbox.collision_layer = 0
+		hitbox.collision_mask = 0
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

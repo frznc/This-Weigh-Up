@@ -35,6 +35,7 @@ var closest_distance = INF
 
 func _ready() -> void:
 	if Music.musicplaying == false:
+		Music.volume_db = -8
 		Music.playmusic()
 
 func _physics_process(delta: float) -> void:
@@ -81,6 +82,11 @@ func _physics_process(delta: float) -> void:
 	
 	# Set camera confine
 	camera.limit_right = Global.confine - 4
+	
+	# Die if out of level
+	if global_position.y > 64 and Global.can_move:
+		Global.can_move = false
+		die()
 	
 	debug()
 	move_and_slide()

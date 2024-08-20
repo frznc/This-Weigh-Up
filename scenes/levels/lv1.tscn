@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="5_clm86"]
 [ext_resource type="PackedScene" uid="uid://35n3wcfappjx" path="res://scenes/objects/confine.tscn" id="7_67lp0"]
 
-[node name="DefaultLv" type="Node2D"]
+[node name="Level" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_dwyql")]
 position = Vector2(28, 27)

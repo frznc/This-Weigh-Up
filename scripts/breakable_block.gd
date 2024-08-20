@@ -25,17 +25,19 @@ func _ready() -> void:
 	block_shape.extents = Vector2(0, 4.25)
 	break_shape.extents = Vector2(0, 1)
 	break_particles.emission_rect_extents = Vector2(0, 4)
-	while size > 0:
+	var size_loop = size
+	while size_loop > 0:
 		block_shape.extents += Vector2(4, 0)
 		break_shape.extents += Vector2(4, 0)
 		break_particles.emission_rect_extents += Vector2(4, 0)
-		size -= 1
+		size_loop -= 1
 	break_shape.extents += Vector2(-4, 0)
 
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		sprite.frame = size - 1
+		limit_label.text = str(weight_limit)
 	if player_inside and weight_limit <= Global.weight and sprite.visible:
 		switch_state()
 

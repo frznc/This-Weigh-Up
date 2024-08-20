@@ -126,8 +126,9 @@ limit_top = -75
 limit_bottom = 75
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
+drag_left_margin = 0.25
 drag_top_margin = 1.0
-drag_right_margin = 0.3
+drag_right_margin = 0.25
 
 [node name="CanvasLayer" type="CanvasLayer" parent="camera"]
 visible = false
