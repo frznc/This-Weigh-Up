@@ -120,7 +120,7 @@ position = Vector2(0.375, 2)
 shape = SubResource("RectangleShape2D_pnrpn")
 
 [node name="camera" type="Camera2D" parent="."]
-offset = Vector2(0, -20)
+offset = Vector2(0, -21)
 limit_left = 0
 limit_top = -75
 limit_bottom = 75
