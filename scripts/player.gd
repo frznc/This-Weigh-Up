@@ -237,7 +237,8 @@ func position_hands(delta):
 
 func debug(): # Debug
 	if Input.is_action_just_pressed("f1"):
-		$camera/CanvasLayer.visible = !$camera/CanvasLayer.visible
+		print("debug")
+		#$camera/CanvasLayer.visible = !$camera/CanvasLayer.visible
 	$"camera/CanvasLayer/Control/VBoxContainer/held weights".text = str("held: ", Global.held_weights)
 	$"camera/CanvasLayer/Control/VBoxContainer/jump vel".text = str("jump vel: ", jump_velocity)
 	$camera/CanvasLayer/Control/VBoxContainer/speed.text = str("speed: ", speed)

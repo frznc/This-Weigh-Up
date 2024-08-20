@@ -70,18 +70,18 @@ position = Vector2(85, 156)
 shape = SubResource("RectangleShape2D_e7to8")
 
 [node name="Play" type="Button" parent="."]
-offset_left = 5.0
+offset_left = 21.0
 offset_top = 19.0
-offset_right = 53.0
+offset_right = 69.0
 offset_bottom = 35.0
 focus_mode = 0
 theme = ExtResource("3_iotbw")
 text = "Play"
 
 [node name="Options" type="Button" parent="."]
-offset_left = 60.0
+offset_left = 99.0
 offset_top = 19.0
-offset_right = 108.0
+offset_right = 147.0
 offset_bottom = 35.0
 focus_mode = 0
 theme = ExtResource("3_iotbw")
@@ -89,10 +89,11 @@ text = "Options
 "
 
 [node name="Exit" type="Button" parent="."]
+visible = false
 offset_left = 115.0
-offset_top = 19.0
+offset_top = -20.0
 offset_right = 163.0
-offset_bottom = 35.0
+offset_bottom = -4.0
 focus_mode = 0
 theme = ExtResource("3_iotbw")
 text = "Exit
@@ -112,6 +113,10 @@ autostart = true
 stream = ExtResource("7_0v6nt")
 volume_db = 5.0
 pitch_scale = 0.4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
