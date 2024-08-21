@@ -5,7 +5,7 @@ var musicplaying = false
 
 func playmusic():
 	musicplaying = true
-	#$"/root/Music".play()
+	$"/root/Music".play()
 
 func stopmusic():
 	musicplaying = false

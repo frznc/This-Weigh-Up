@@ -8,6 +8,7 @@ var jump_velocity = -175.0
 
 var too_heavy = false
 var dead = false
+var spinning = false # Overrides anim state to spinning
 
 var jumping = false
 var coyote_time = 0.06
@@ -21,6 +22,8 @@ var weight_mult = 4 # Amount that a weight impacts jump height and speed.
 var standingonweights = []
 var closest_weight = null
 var closest_distance = INF
+
+var spawned = false # spawn anim
 
 @onready var weight_obj = preload("res://scenes/objects/weight.tscn")
 @onready var weightstack_obj = preload("res://scenes/weight_stack.tscn")
@@ -40,66 +43,77 @@ func _ready() -> void:
 	if Music.musicplaying == false:
 		Music.volume_db = -8
 		Music.playmusic()
+	hands.visible = false
+	$"spawn particles".emitting = true
+	$"Spawn Timer".start()
+	global_position.y -= 5
+	spinning = true
+func _on_spawn_timer_timeout() -> void:
+	hands.visible = true
+	spawned = true
+	spinning = false
 
 func _physics_process(delta: float) -> void:
-	if enable_physics:run_physics(delta)
-	else: velocity.x = 0;velocity.y = 0
-	if Global.can_move && !dead:run_movement(delta)
-	else: velocity.x = 0; $sprite.play("idle")
-
-	# Orient player
-	if !dead:
-		if Input.is_action_just_pressed("left"): sprite.flip_h = true 
-		if Input.is_action_just_pressed("right"): sprite.flip_h = false
-	
 	# Get current state from get_player_state then play the anim
 	sprite.play(str(get_player_state()))
-
-	
-	position_hands(delta)
-	check_crouching()
-	
-	# Check which weight is closest to the player
-	closest_weight = null
-	closest_distance = INF
-	
-	for weight in Global.nearby_weights:
-		var distance = global_position.distance_to(weight.global_position)
-		if distance < closest_distance:
-			closest_distance = distance
-			closest_weight = weight
-
-	## Pickup weights
-	if (Input.is_action_just_pressed("pickup")) and Global.nearby_weights != [] and !dead:
-		Global.held_weights.push_back(closest_weight.weight_value) # Add weight to global array
-		update_weight() # update the player's weight value
-		add_to_weightstack(closest_weight.weight_value) # Add to the 'weight stack'
-		pickup_sound.pitch_scale = 0.5 + (Global.held_weights.size() * 0.02)
-		pickup_sound.play()
-		closest_weight.queue_free()
-		pass
-	
-	## Drop weights
-	if Input.is_action_just_pressed("drop") and Global.held_weights != [] and !dead:
-		drop_sound.play()
-		drop_weight(false)
 		
-	# Restart Level
-	if Input.is_action_just_pressed("restart"):
-		death_timer.stop()
-		restart_timer.stop()
-		Global.restart_level()
-	
-	# Set camera confine
-	camera.limit_right = Global.confine - 4
-	
-	# Die if out of level
-	if global_position.y > 64 and Global.can_move:
-		Global.can_move = false
-		die()
-	
-	debug()
-	move_and_slide()
+	if spawned == true: # Everything else goes down here
+		if enable_physics:run_physics(delta)
+		else: velocity.x = 0;velocity.y = 0
+		if Global.can_move && !dead:run_movement(delta)
+		else: velocity.x = 0; $sprite.play("idle")
+
+		# Orient player
+		if !dead:
+			if Input.is_action_just_pressed("left"): sprite.flip_h = true 
+			if Input.is_action_just_pressed("right"): sprite.flip_h = false
+		
+
+		
+		position_hands(delta)
+		check_crouching()
+		
+		# Check which weight is closest to the player
+		closest_weight = null
+		closest_distance = INF
+		
+		for weight in Global.nearby_weights:
+			var distance = global_position.distance_to(weight.global_position)
+			if distance < closest_distance:
+				closest_distance = distance
+				closest_weight = weight
+
+		## Pickup weights
+		if (Input.is_action_just_pressed("pickup")) and Global.nearby_weights != [] and !dead:
+			Global.held_weights.push_back(closest_weight.weight_value) # Add weight to global array
+			update_weight() # update the player's weight value
+			add_to_weightstack(closest_weight.weight_value) # Add to the 'weight stack'
+			pickup_sound.pitch_scale = 0.5 + (Global.held_weights.size() * 0.02)
+			pickup_sound.play()
+			closest_weight.queue_free()
+			pass
+		
+		## Drop weights
+		if Input.is_action_just_pressed("drop") and Global.held_weights != [] and !dead:
+			drop_sound.play()
+			drop_weight(false)
+			
+		# Restart Level
+		if Input.is_action_just_pressed("restart"):
+			death_timer.stop()
+			restart_timer.stop()
+			Global.restart_level()
+		
+		# Set camera confine
+		camera.limit_right = Global.confine - 4
+		
+		# Die if out of level
+		if global_position.y > 64 and Global.can_move:
+			Global.can_move = false
+			die()
+		
+		debug()
+		move_and_slide()
 
 
 func drop_weight(all : bool):
@@ -212,9 +226,14 @@ func die():
 	hands.visible = false
 	sprite.visible = false
 	particle_crushed.emitting = true
-	hands.visible = false
 	restart_timer.start()
-
+	
+func explode():
+	$explode.play()
+	enable_physics = false
+	hands.visible = false
+	sprite.visible = false
+	$"explode particles".emitting = true
 
 func _on_restart_timer_timeout() -> void:
 	Global.restart_level()
@@ -228,6 +247,8 @@ func add_to_weightstack(weight): # Called when picking up a weight. Creates the 
 
 
 func get_player_state(): # Determine player state (used for animations)
+	if spinning == true:
+		return "spinning"
 	if too_heavy == true || crouching == true:
 		return "crouch"
 	if jumping == true:

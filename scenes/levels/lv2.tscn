@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c1loorygq2ep6"]
+[gd_scene load_steps=9 format=4 uid="uid://c1loorygq2ep6"]
 
 [ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_uqba8"]
 [ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_2x88k"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="5_365vs"]
 [ext_resource type="PackedScene" uid="uid://bil5hymglk1o" path="res://scenes/levels/lv3.tscn" id="5_xyrkw"]
 [ext_resource type="PackedScene" uid="uid://35n3wcfappjx" path="res://scenes/objects/confine.tscn" id="6_1353k"]
+[ext_resource type="PackedScene" uid="uid://dmxhyagnlspeb" path="res://scenes/objects/background.tscn" id="8_t47c4"]
 
 [node name="Level" type="Node2D"]
 
@@ -38,3 +39,6 @@ weight_value = 2
 
 [node name="Confine" parent="." instance=ExtResource("6_1353k")]
 position = Vector2(172, 52)
+
+[node name="background" parent="." instance=ExtResource("8_t47c4")]
+position = Vector2(25, -56)

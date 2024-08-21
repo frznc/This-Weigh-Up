@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://wjseg178c4rq"]
+[gd_scene load_steps=31 format=3 uid="uid://wjseg178c4rq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gev8y"]
 [ext_resource type="Texture2D" uid="uid://bmo6xfs82owhm" path="res://textures/paws.png" id="2_yvkrc"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://c6egpbj5fcggk" path="res://sounds/jump.wav" id="7_yanh3"]
 [ext_resource type="AudioStream" uid="uid://c3ttoqgsg60rg" path="res://sounds/crush.wav" id="8_27dmb"]
 [ext_resource type="AudioStream" uid="uid://c4rraxpdie4jc" path="res://sounds/death.wav" id="9_nvbok"]
+[ext_resource type="AudioStream" uid="uid://buhvh1wvo75p8" path="res://sounds/explosion-3.wav" id="10_batrb"]
 [ext_resource type="AudioStream" uid="uid://bmbnme8vwmigw" path="res://sounds/pickup.wav" id="10_kjaro"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rs1lq"]
@@ -44,6 +45,30 @@ region = Rect2(0, 0, 8, 9)
 [sub_resource type="AtlasTexture" id="AtlasTexture_osnuc"]
 atlas = ExtResource("3_8mbsv")
 region = Rect2(40, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmhxh"]
+atlas = ExtResource("3_8mbsv")
+region = Rect2(112, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6157"]
+atlas = ExtResource("3_8mbsv")
+region = Rect2(104, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l8ft"]
+atlas = ExtResource("3_8mbsv")
+region = Rect2(96, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il1ex"]
+atlas = ExtResource("3_8mbsv")
+region = Rect2(88, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blwrv"]
+atlas = ExtResource("3_8mbsv")
+region = Rect2(80, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6y75"]
+atlas = ExtResource("3_8mbsv")
+region = Rect2(72, 0, 8, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1woy2"]
 atlas = ExtResource("3_8mbsv")
@@ -81,6 +106,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 0.5,
+"texture": SubResource("AtlasTexture_cmhxh")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_p6157")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_1l8ft")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_il1ex")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_blwrv")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_j6y75")
+}],
+"loop": true,
+"name": &"spinning",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_1woy2")
 }, {
 "duration": 0.5,
@@ -102,7 +150,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.904494, 0), -0.0489008, 0.0, 0
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_ln64w"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.513726, 0.462745, 0.611765, 1)
 
 [node name="player" type="CharacterBody2D"]
 z_index = 200
@@ -116,7 +165,8 @@ sprite_frames = SubResource("SpriteFrames_l4x0e")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gqwo0")
-animation = &"walk"
+animation = &"spinning"
+frame_progress = 0.211336
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.375, 2)
@@ -211,6 +261,48 @@ scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_53uy4")
 color_ramp = SubResource("Gradient_ln64w")
 
+[node name="explode particles" type="CPUParticles2D" parent="."]
+z_index = 500
+z_as_relative = false
+position = Vector2(1, 5)
+emitting = false
+amount = 20
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(4, 1)
+spread = 180.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 120.0
+initial_velocity_max = 120.0
+angular_velocity_max = 450.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_53uy4")
+color_ramp = SubResource("Gradient_ln64w")
+
+[node name="spawn particles" type="CPUParticles2D" parent="."]
+z_index = 500
+z_as_relative = false
+position = Vector2(0, 1)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(40, 40)
+spread = 180.0
+gravity = Vector2(0, 20)
+angular_velocity_max = 450.0
+radial_accel_min = -400.0
+radial_accel_max = -400.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_53uy4")
+color_ramp = SubResource("Gradient_ln64w")
+
 [node name="Sweat Particles" type="CPUParticles2D" parent="."]
 position = Vector2(1, -1)
 rotation = 4.71239
@@ -235,10 +327,18 @@ stream = ExtResource("8_27dmb")
 [node name="death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_nvbok")
 
+[node name="explode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_batrb")
+volume_db = -3.0
+
 [node name="Death Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Restart Timer" type="Timer" parent="."]
+
+[node name="Spawn Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [node name="pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_kjaro")
@@ -252,3 +352,4 @@ pitch_scale = 0.4
 [connection signal="body_exited" from="floorchecker" to="." method="_on_floorchecker_body_exited"]
 [connection signal="timeout" from="Death Timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="Restart Timer" to="." method="_on_restart_timer_timeout"]
+[connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

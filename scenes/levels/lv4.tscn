@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c8hsf2ar3ichn"]
+[gd_scene load_steps=9 format=4 uid="uid://c8hsf2ar3ichn"]
 
 [ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_0ndyw"]
 [ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_m4xcc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://i7p2h8qtpyku" path="res://scenes/levels/lv5.tscn" id="5_jstl3"]
 [ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="6_xkw8w"]
 [ext_resource type="PackedScene" uid="uid://35n3wcfappjx" path="res://scenes/objects/confine.tscn" id="7_kb5hh"]
+[ext_resource type="PackedScene" uid="uid://dmxhyagnlspeb" path="res://scenes/objects/background.tscn" id="8_tyguh"]
 
 [node name="Level" type="Node2D"]
 
@@ -66,3 +67,6 @@ weight_value = 6
 [node name="weight11" parent="." instance=ExtResource("6_xkw8w")]
 position = Vector2(36, -36)
 weight_value = 6
+
+[node name="background" parent="." instance=ExtResource("8_tyguh")]
+position = Vector2(17, -67)
