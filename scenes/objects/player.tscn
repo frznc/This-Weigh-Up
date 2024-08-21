@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://wjseg178c4rq"]
+[gd_scene load_steps=24 format=3 uid="uid://wjseg178c4rq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gev8y"]
 [ext_resource type="Texture2D" uid="uid://bmo6xfs82owhm" path="res://textures/paws.png" id="2_yvkrc"]
@@ -94,6 +94,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnrpn"]
 size = Vector2(6.75, 6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4p3"]
+size = Vector2(8, 9)
+
 [sub_resource type="Curve" id="Curve_53uy4"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.904494, 0), -0.0489008, 0.0, 0, 0]
 point_count = 2
@@ -118,6 +121,12 @@ animation = &"crouch"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.375, 2)
 shape = SubResource("RectangleShape2D_pnrpn")
+
+[node name="floorchecker" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floorchecker"]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_ok4p3")
 
 [node name="camera" type="Camera2D" parent="."]
 offset = Vector2(0, -21)
@@ -239,5 +248,7 @@ pitch_scale = 0.58
 stream = ExtResource("10_kjaro")
 pitch_scale = 0.4
 
+[connection signal="body_entered" from="floorchecker" to="." method="_on_floorchecker_body_entered"]
+[connection signal="body_exited" from="floorchecker" to="." method="_on_floorchecker_body_exited"]
 [connection signal="timeout" from="Death Timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="Restart Timer" to="." method="_on_restart_timer_timeout"]

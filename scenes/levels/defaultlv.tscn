@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://3atwndoe14dc"]
+[gd_scene load_steps=7 format=4 uid="uid://3atwndoe14dc"]
 
 [ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_5cw0f"]
 [ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_me8q6"]
 [ext_resource type="PackedScene" uid="uid://ul5vt7t6vjq5" path="res://scenes/objects/stand_scale.tscn" id="3_qnu4t"]
 [ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/objects/endpoint.tscn" id="4_uprfx"]
 [ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="5_tw3n6"]
+[ext_resource type="PackedScene" uid="uid://bindbnw1e5ak8" path="res://scenes/objects/spike.tscn" id="6_0ehwi"]
 
 [node name="Lv1" type="Node2D"]
 
@@ -39,3 +40,6 @@ weight_value = 2
 [node name="weight3" parent="." instance=ExtResource("5_tw3n6")]
 position = Vector2(52, 28)
 weight_value = 9
+
+[node name="Spike" parent="." instance=ExtResource("6_0ehwi")]
+position = Vector2(25, 29)

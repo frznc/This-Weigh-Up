@@ -3,6 +3,7 @@ extends RigidBody2D
 var player_inside = false
 var test = false
 var sitting_on = ""
+var collidable = true
 
 @export_range(-9,9) var weight_value : int = 0 
 
@@ -15,14 +16,21 @@ func _ready() -> void:
 		$sprite.frame = abs(weight_value) + 10
 	else:
 		$sprite.frame = weight_value
-
+	
+	
 
 func _process(delta: float) -> void:
-	if player.closest_weight == self:
+	if player.closest_weight == self && !player.dead:
 		selected.visible = true
 	else:
 		selected.visible = false
-
+		
+	match collidable:
+		true: $"Static Weight/CollisionShape2D".disabled = false
+		false: $"Static Weight/CollisionShape2D".disabled = true
+		
+	if player_inside == false: # gives collision back after a player presses down to go through it
+		collidable = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	# Player
@@ -31,9 +39,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		Global.nearby_weights.push_front(self)
 	
 	# Platform Scale
-	if body.name == "Static Hitbox" and linear_velocity.y == 0:
-		print('hi')
-	print(body.name)
+	#if body.name == "Static Hitbox" and linear_velocity.y == 0:
+		#print('hi')
+	#print(body.name)
 	
 	# Another Weight
 

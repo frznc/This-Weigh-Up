@@ -7,6 +7,8 @@ var heaviness = 0
 
 var held_weights = [] # Array containing the weights the player is holding
 var nearby_weights = [] # List of weights within pickup range. Used in avoiding picking up multiple at once.
+var weight_positions = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
 
 var confine : int = 10000000
 

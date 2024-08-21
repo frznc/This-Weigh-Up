@@ -24,3 +24,8 @@ func turn_on():
 	visible = true
 	hitbox.collision_layer = 1 | 2
 	hitbox.collision_mask = 1 | 2
+	
+func turn_off():
+	visible = false
+	hitbox.collision_layer = 0 | 0
+	hitbox.collision_mask = 0 | 0
