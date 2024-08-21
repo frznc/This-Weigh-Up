@@ -245,16 +245,12 @@ func position_hands(delta):
 			false:hands.global_position = hands.global_position.lerp(global_position + Vector2(1,Global.heaviness),delta * 30)
 	elif crouching == false:
 		hands.frame = 1 
-		match sprite.flip_h: # position based on player orientation
-			true:hands.global_position = hands.global_position.lerp(global_position + Vector2(0,6),delta*80)
-			false:hands.global_position = hands.global_position.lerp(global_position + Vector2(1,6),delta*80)
+		hands.global_position = hands.global_position.lerp(global_position + Vector2(0,6),delta*80)
 		if sprite.frame == 1: # if player is in the hoppy part of walk anim, move arms up a pixel
 			hands.global_position = hands.global_position + Vector2(0,-1)
 	else:
 		hands.frame = 1 
-		match sprite.flip_h: # position based on player orientation
-			true:hands.global_position = hands.global_position.lerp(global_position + Vector2(0,6),delta*70)
-			false:hands.global_position = hands.global_position.lerp(global_position + Vector2(1,6),delta*70)
+		hands.global_position = hands.global_position.lerp(global_position + Vector2(0,6),delta*70)
 		hands.global_position = hands.global_position + Vector2(0,1)
 
 func check_crouching():

@@ -3,9 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	$"1".frame += 1
+	$s1.play("default")
+	$s2.play("default")
+	$s3.play("default")
+	$s4.play("default")

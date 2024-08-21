@@ -33,31 +33,31 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o8iay"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_62yqc"]
 atlas = ExtResource("3_8mbsv")
-region = Rect2(90, 0, 9, 9)
+region = Rect2(32, 0, 8, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iadik"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8ham"]
 atlas = ExtResource("3_8mbsv")
-region = Rect2(54, 0, 9, 9)
+region = Rect2(0, 0, 8, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_po0yn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_osnuc"]
 atlas = ExtResource("3_8mbsv")
-region = Rect2(99, 0, 9, 9)
+region = Rect2(40, 0, 8, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_brn6f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1woy2"]
 atlas = ExtResource("3_8mbsv")
-region = Rect2(54, 0, 9, 9)
+region = Rect2(0, 0, 8, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5bxe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx7u2"]
 atlas = ExtResource("3_8mbsv")
-region = Rect2(63, 0, 9, 9)
+region = Rect2(8, 0, 8, 9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gqwo0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o8iay")
+"texture": SubResource("AtlasTexture_62yqc")
 }],
 "loop": true,
 "name": &"crouch",
@@ -65,7 +65,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iadik")
+"texture": SubResource("AtlasTexture_b8ham")
 }],
 "loop": true,
 "name": &"idle",
@@ -73,7 +73,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_po0yn")
+"texture": SubResource("AtlasTexture_osnuc")
 }],
 "loop": true,
 "name": &"jump",
@@ -81,10 +81,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_brn6f")
+"texture": SubResource("AtlasTexture_1woy2")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_p5bxe")
+"texture": SubResource("AtlasTexture_kx7u2")
 }],
 "loop": true,
 "name": &"walk",
@@ -116,7 +116,7 @@ sprite_frames = SubResource("SpriteFrames_l4x0e")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gqwo0")
-animation = &"crouch"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.375, 2)

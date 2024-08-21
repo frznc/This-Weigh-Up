@@ -50,19 +50,21 @@ animations = [{
 z_index = -998
 script = ExtResource("1_0obt0")
 
-[node name="1" type="AnimatedSprite2D" parent="."]
+[node name="s1" type="AnimatedSprite2D" parent="."]
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_fqor1")
+frame = 4
+frame_progress = 0.294492
 
-[node name="2" type="AnimatedSprite2D" parent="."]
+[node name="s2" type="AnimatedSprite2D" parent="."]
 position = Vector2(128, 0)
 sprite_frames = SubResource("SpriteFrames_fqor1")
 
-[node name="3" type="AnimatedSprite2D" parent="."]
+[node name="s3" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 128)
 sprite_frames = SubResource("SpriteFrames_fqor1")
 
-[node name="4" type="AnimatedSprite2D" parent="."]
+[node name="s4" type="AnimatedSprite2D" parent="."]
 position = Vector2(128, 128)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_fqor1")
