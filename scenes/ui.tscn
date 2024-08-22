@@ -21,6 +21,7 @@ texture = ExtResource("3_hvqsq")
 centered = false
 
 [node name="Negative Dial" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(17, 152)
 rotation = -3.14159
 texture = ExtResource("4_x5rj5")

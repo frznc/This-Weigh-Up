@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://lcmd84m23nst"]
+
+[ext_resource type="Script" path="res://level_title.gd" id="1_eboc4"]
+[ext_resource type="Theme" uid="uid://da6ednpdx62ww" path="res://theme.tres" id="2_vnuon"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2tg1"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="level_title" type="Control"]
+z_index = 1000
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+script = ExtResource("1_eboc4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a2tg1")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_vnuon")
+theme_override_font_sizes/font_size = 8
+text = "Default Message!"
+horizontal_alignment = 1

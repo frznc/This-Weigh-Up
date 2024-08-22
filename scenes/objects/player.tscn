@@ -70,13 +70,13 @@ region = Rect2(80, 0, 8, 9)
 atlas = ExtResource("3_8mbsv")
 region = Rect2(72, 0, 8, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1woy2"]
-atlas = ExtResource("3_8mbsv")
-region = Rect2(0, 0, 8, 9)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kx7u2"]
 atlas = ExtResource("3_8mbsv")
 region = Rect2(8, 0, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1woy2"]
+atlas = ExtResource("3_8mbsv")
+region = Rect2(0, 0, 8, 9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gqwo0"]
 animations = [{
@@ -129,10 +129,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_1woy2")
+"texture": SubResource("AtlasTexture_kx7u2")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_kx7u2")
+"texture": SubResource("AtlasTexture_1woy2")
 }],
 "loop": true,
 "name": &"walk",
@@ -165,8 +165,7 @@ sprite_frames = SubResource("SpriteFrames_l4x0e")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gqwo0")
-animation = &"spinning"
-frame_progress = 0.211336
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.375, 2)

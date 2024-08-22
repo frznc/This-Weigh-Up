@@ -1,6 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://i7p2h8qtpyku"]
 
 [ext_resource type="PackedScene" uid="uid://wjseg178c4rq" path="res://scenes/objects/player.tscn" id="1_4kfq6"]
+[ext_resource type="PackedScene" uid="uid://b32acehua0eea" path="res://scenes/LEVEL_OPTIONS.tscn" id="1_xtre8"]
 [ext_resource type="TileSet" uid="uid://cxjfjeit2gmrb" path="res://scenes/levels/tileset.tres" id="2_n8whw"]
 [ext_resource type="PackedScene" uid="uid://35n3wcfappjx" path="res://scenes/objects/confine.tscn" id="3_f8f7a"]
 [ext_resource type="PackedScene" uid="uid://bindbnw1e5ak8" path="res://scenes/objects/spike.tscn" id="4_8y13r"]
@@ -8,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cth3ckguqvr5m" path="res://scenes/objects/endpoint.tscn" id="6_m6gw3"]
 [ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="7_bpigm"]
 [ext_resource type="PackedScene" uid="uid://bydrjwpl813k" path="res://scenes/levels/lv6.tscn" id="7_lhocd"]
-[ext_resource type="PackedScene" uid="uid://dmxhyagnlspeb" path="res://scenes/objects/background.tscn" id="9_ik5uh"]
 
 [node name="Level" type="Node2D"]
+
+[node name="LEVEL_OPTIONS" parent="." instance=ExtResource("1_xtre8")]
 
 [node name="player" parent="." instance=ExtResource("1_4kfq6")]
 position = Vector2(36, 27)
@@ -52,6 +54,3 @@ weight_value = 1
 [node name="weight2" parent="." instance=ExtResource("7_bpigm")]
 position = Vector2(108, -12)
 weight_value = 7
-
-[node name="background" parent="." instance=ExtResource("9_ik5uh")]
-position = Vector2(16, -46)

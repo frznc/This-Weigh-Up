@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcls7pwh0f7t"]
+
+[ext_resource type="Script" path="res://scripts/level_button.gd" id="1_5bnu0"]
+[ext_resource type="Theme" uid="uid://da6ednpdx62ww" path="res://theme.tres" id="1_pun2g"]
+
+[node name="level_button" type="Button"]
+custom_minimum_size = Vector2(9, 9)
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_pun2g")
+text = "1"
+script = ExtResource("1_5bnu0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
