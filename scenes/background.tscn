@@ -26,19 +26,19 @@ region = Rect2(512, 0, 128, 128)
 [sub_resource type="SpriteFrames" id="SpriteFrames_fqor1"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_bpheg")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_txsnp")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_pag88")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_45ne7")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_e55pw")
 }],
 "loop": true,
@@ -48,79 +48,246 @@ animations = [{
 
 [node name="background" type="Node2D"]
 z_index = -998
+position = Vector2(-24, 0)
 script = ExtResource("1_0obt0")
 
-[node name="s1" type="AnimatedSprite2D" parent="."]
-rotation = 3.14159
-sprite_frames = SubResource("SpriteFrames_fqor1")
-frame = 4
-frame_progress = 0.294492
-
-[node name="s2" type="AnimatedSprite2D" parent="."]
-position = Vector2(128, 0)
-sprite_frames = SubResource("SpriteFrames_fqor1")
-
-[node name="s3" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 128)
-sprite_frames = SubResource("SpriteFrames_fqor1")
-
-[node name="s4" type="AnimatedSprite2D" parent="."]
-position = Vector2(128, 128)
-rotation = 3.14159
-sprite_frames = SubResource("SpriteFrames_fqor1")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 
 [node name="s5" type="AnimatedSprite2D" parent="."]
-position = Vector2(256, 0)
+position = Vector2(-96, 0)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_fqor1")
 frame = 4
 frame_progress = 0.294492
 
 [node name="s6" type="AnimatedSprite2D" parent="."]
-position = Vector2(256, 128)
+position = Vector2(-96, 128)
 sprite_frames = SubResource("SpriteFrames_fqor1")
 
 [node name="s10" type="AnimatedSprite2D" parent="."]
-position = Vector2(384, 0)
+position = Vector2(32, 0)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_fqor1")
 frame = 4
 frame_progress = 0.294492
 
 [node name="s11" type="AnimatedSprite2D" parent="."]
-position = Vector2(384, 128)
+position = Vector2(32, 128)
 sprite_frames = SubResource("SpriteFrames_fqor1")
 
 [node name="s12" type="AnimatedSprite2D" parent="."]
-position = Vector2(512, 0)
+position = Vector2(160, 0)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_fqor1")
 frame = 4
 frame_progress = 0.294492
 
 [node name="s13" type="AnimatedSprite2D" parent="."]
-position = Vector2(512, 128)
+position = Vector2(160, 128)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s9" type="AnimatedSprite2D" parent="."]
+position = Vector2(-96, 256)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s18" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 256)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s19" type="AnimatedSprite2D" parent="."]
+position = Vector2(160, 256)
 sprite_frames = SubResource("SpriteFrames_fqor1")
 
 [node name="s7" type="AnimatedSprite2D" parent="."]
-position = Vector2(256, -128)
+position = Vector2(-96, -128)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_fqor1")
 
-[node name="s8" type="AnimatedSprite2D" parent="."]
-position = Vector2(128, -128)
-sprite_frames = SubResource("SpriteFrames_fqor1")
-
 [node name="s14" type="AnimatedSprite2D" parent="."]
-position = Vector2(512, -128)
+position = Vector2(160, -128)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_fqor1")
 
 [node name="s15" type="AnimatedSprite2D" parent="."]
-position = Vector2(384, -128)
+position = Vector2(32, -128)
 sprite_frames = SubResource("SpriteFrames_fqor1")
 
-[node name="s9" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.000305176, -127.999)
+[node name="s8" type="AnimatedSprite2D" parent="."]
+position = Vector2(-96, -256)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s20" type="AnimatedSprite2D" parent="."]
+position = Vector2(-216, 0)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+frame = 4
+frame_progress = 0.294492
+
+[node name="s21" type="AnimatedSprite2D" parent="."]
+position = Vector2(-216, 128)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s22" type="AnimatedSprite2D" parent="."]
+position = Vector2(-216, 256)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s23" type="AnimatedSprite2D" parent="."]
+position = Vector2(-216, -128)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s24" type="AnimatedSprite2D" parent="."]
+position = Vector2(-216, -256)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s16" type="AnimatedSprite2D" parent="."]
+position = Vector2(160, -256)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s25" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, 0)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+frame = 4
+frame_progress = 0.294492
+
+[node name="s26" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, 128)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s27" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, 256)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s28" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, -128)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s29" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, -256)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s30" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, 0)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+frame = 4
+frame_progress = 0.294492
+
+[node name="s31" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, 128)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s32" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, 256)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s33" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, -128)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s34" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, -256)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s17" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, -256)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s35" type="AnimatedSprite2D" parent="."]
+position = Vector2(-96, -384)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s36" type="AnimatedSprite2D" parent="."]
+position = Vector2(-216, -384)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s41" type="AnimatedSprite2D" parent="."]
+position = Vector2(-320, 0)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+frame = 4
+frame_progress = 0.294492
+
+[node name="s42" type="AnimatedSprite2D" parent="."]
+position = Vector2(-320, 128)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s43" type="AnimatedSprite2D" parent="."]
+position = Vector2(-320, 256)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s47" type="AnimatedSprite2D" parent="."]
+position = Vector2(-96, 376)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s48" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 376)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s49" type="AnimatedSprite2D" parent="."]
+position = Vector2(160, 376)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s50" type="AnimatedSprite2D" parent="."]
+position = Vector2(-216, 376)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s51" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, 376)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s52" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, 376)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s53" type="AnimatedSprite2D" parent="."]
+position = Vector2(-320, 376)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s44" type="AnimatedSprite2D" parent="."]
+position = Vector2(-320, -128)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s45" type="AnimatedSprite2D" parent="."]
+position = Vector2(-320, -256)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s46" type="AnimatedSprite2D" parent="."]
+position = Vector2(-320, -384)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s37" type="AnimatedSprite2D" parent="."]
+position = Vector2(160, -384)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s38" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, -384)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s39" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, -384)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[node name="s40" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, -384)
+sprite_frames = SubResource("SpriteFrames_fqor1")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

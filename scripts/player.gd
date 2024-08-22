@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
 				closest_weight = weight
 
 		## Pickup weights
-		if (Input.is_action_just_pressed("pickup")) and Global.nearby_weights != [] and !dead:
+		if (Input.is_action_just_pressed("pickup")) and Global.nearby_weights != [] and !dead and !too_heavy:
 			Global.held_weights.push_back(closest_weight.weight_value) # Add weight to global array
 			update_weight() # update the player's weight value
 			add_to_weightstack(closest_weight.weight_value) # Add to the 'weight stack'

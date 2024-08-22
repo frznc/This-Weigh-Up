@@ -1,8 +1,20 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://da6ednpdx62ww"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://da6ednpdx62ww"]
 
 [ext_resource type="FontFile" uid="uid://bjuv3x1m38iht" path="res://textures/04B_03__.TTF" id="1_fikrp"]
 [ext_resource type="Texture2D" uid="uid://w8r47xi321m7" path="res://textures/check_checked.png" id="2_h6kqq"]
 [ext_resource type="Texture2D" uid="uid://d368r67mfo467" path="res://textures/check_unchecked.png" id="3_ostv0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhmlr"]
+bg_color = Color(0.372549, 0.341176, 0.309804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 1.0
+expand_margin_right = 2.0
+expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mp72f"]
 bg_color = Color(0.760784, 0.764706, 0.780392, 1)
@@ -62,6 +74,7 @@ Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 3
 Button/font_sizes/font_size = 8
 Button/fonts/font = ExtResource("1_fikrp")
+Button/styles/disabled = SubResource("StyleBoxFlat_dhmlr")
 Button/styles/hover = SubResource("StyleBoxFlat_mp72f")
 Button/styles/normal = SubResource("StyleBoxFlat_c7awh")
 Button/styles/pressed = SubResource("StyleBoxFlat_3lum3")

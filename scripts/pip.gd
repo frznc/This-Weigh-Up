@@ -19,4 +19,5 @@ func dim():
 
 
 func too_much():
-	sprite.frame = 2
+	if sprite.frame == 1:
+		sprite.frame = 2

@@ -21,12 +21,10 @@ func _process(delta: float) -> void:
 	Global.weight_positions.remove_at(id)
 	Global.weight_positions.insert(id,global_position)
 
-	
 	if Global.held_weights.size() < id: # If the weight's ID is larger than the size of the global stack array, it knows to die. 
 		queue_free()
 		Global.weight_positions.remove_at(id)
 	
-		
 	global_position += current_offset
 	
 	# Offset a pixel based on movement direction

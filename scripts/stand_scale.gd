@@ -7,7 +7,7 @@ extends Node2D
 @onready var sprite = $Sprite2D
 @onready var label = $Label
 @onready var stand_box : Area2D = $Area2D
-@onready var pip : PackedScene = preload("res://scenes/objects/pip.tscn")
+@onready var pip : PackedScene = preload("res://scenes/pip.tscn")
 @onready var pip_timer = $"Pip Tick"
 @onready var blip = $blip
 @onready var yay = $complete
@@ -80,7 +80,9 @@ func _on_pip_tick_timeout() -> void:
 	if player_inside == true: pips_target = Global.weight
 	else: pips_target = 0 # Set target to 0 if player is not on scale
 	
-	if pips_target > weight_needed && error_told == false:
+	if Global.weight < 0:
+		return
+	if pips_lit > weight_needed && error_told == false:
 		error.play()
 		for pip in pips:
 			pip.too_much()
@@ -96,7 +98,7 @@ func _on_pip_tick_timeout() -> void:
 		pips[pips_lit - 1].light_down(pips_lit)
 		pips_lit -= 1
 	
-	if pips_lit == weight_needed:
+	if pips_lit == weight_needed && !(Global.weight > weight_needed):
 		label["theme_override_colors/font_color"] = Color("00E436")
 		yay.play()
 		pip_timer.stop()
