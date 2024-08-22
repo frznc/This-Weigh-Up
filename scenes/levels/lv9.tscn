@@ -36,7 +36,7 @@ position = Vector2(180.158, 28.4219)
 weight_value = -5
 
 [node name="Confine" parent="." instance=ExtResource("7_hj8h4")]
-position = Vector2(400, 56)
+position = Vector2(364, 52)
 
 [node name="Breakable Block" parent="." instance=ExtResource("8_7b0vx")]
 position = Vector2(116, 4)
