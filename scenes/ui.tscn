@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dbltva5xniuph" path="res://textures/evildial.png" id="4_x5rj5"]
 
 [node name="UI" type="CanvasLayer"]
+offset = Vector2(2.48, 0)
+transform = Transform2D(1, 0, 0, 1, 2.48, 0)
 script = ExtResource("1_414ba")
 
 [node name="Scale" type="Sprite2D" parent="."]
