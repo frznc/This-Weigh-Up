@@ -60,8 +60,8 @@ func _physics_process(delta: float) -> void:
 	if spawned == true: # Everything else goes down here
 		if enable_physics:run_physics(delta)
 		else: velocity.x = 0;velocity.y = 0
-		if Global.can_move && !dead:run_movement(delta)
-		else: velocity.x = 0; $sprite.play("idle")
+		if Global.can_move: run_movement(delta)
+		else: velocity.x = 0;
 
 		# Orient player
 		if !dead:
@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 			pass
 		
 		## Drop weights
-		if Input.is_action_just_pressed("drop") and Global.held_weights != [] and !dead:
+		if Input.is_action_just_pressed("drop") and Global.held_weights != [] and !dead and !too_heavy:
 			drop_sound.play()
 			drop_weight(false)
 			
@@ -140,10 +140,10 @@ func drop_weight(all : bool):
 			instance.position = position + Vector2(0,0) # Set position to player's position (plus an offset if needed)
 			
 		# Throw weight~!!!
-		if crouching == false && Input.is_action_pressed("pickup"):
+		if crouching == false && !all:
 			match sprite.flip_h: # throw in direction
-				false:instance.apply_central_impulse(Vector2(70,-80))
-				true:instance.apply_central_impulse(Vector2(-70,-80))
+				false:instance.apply_central_impulse(Vector2(20,-50))
+				true:instance.apply_central_impulse(Vector2(-20,-50))
 				
 		get_parent().add_child(instance) # Add weight to world
 		
@@ -162,7 +162,7 @@ func run_physics(delta):
 
 func run_movement(delta):
 	# Jumping
-	if Input.is_action_pressed("jump") and jump_available: 
+	if Input.is_action_pressed("jump") and jump_available && !crouching: 
 		jump_available = false
 		velocity.y = jump_velocity
 		jumping = true
@@ -280,8 +280,10 @@ func check_crouching():
 		Global.can_move = false
 		
 		# Remove collision from weight below
-		for x in standingonweights:
-			x.get_parent().collidable = false
+		if Input.is_action_just_pressed("jump"):
+			velocity.y = 0
+			for x in standingonweights:
+				x.get_parent().collidable = false
 			
 	else:
 		crouching = false

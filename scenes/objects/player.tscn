@@ -140,7 +140,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnrpn"]
-size = Vector2(6.75, 6)
+size = Vector2(6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4p3"]
 size = Vector2(8, 9)
@@ -168,7 +168,7 @@ sprite_frames = SubResource("SpriteFrames_gqwo0")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.375, 2)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_pnrpn")
 
 [node name="floorchecker" type="Area2D" parent="."]

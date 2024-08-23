@@ -82,12 +82,6 @@ func _on_pip_tick_timeout() -> void:
 	
 	if Global.weight < 0:
 		return
-	if pips_lit > weight_needed && error_told == false:
-		error.play()
-		for pip in pips:
-			pip.too_much()
-		error_told = true
-		pip_timer.stop()
 	if error_told == true:
 		return
 		
@@ -97,6 +91,13 @@ func _on_pip_tick_timeout() -> void:
 	if pips_lit > pips_target:
 		pips[pips_lit - 1].light_down(pips_lit)
 		pips_lit -= 1
+		
+	if pips_lit - 1 > weight_needed && error_told == false:
+		error.play()
+		for pip in pips:
+			pip.too_much()
+		error_told = true
+		pip_timer.stop()
 	
 	if pips_lit == weight_needed && !(Global.weight > weight_needed):
 		label["theme_override_colors/font_color"] = Color("00E436")
