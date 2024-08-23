@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 const DEF_SPEED = 80.0 # unchanging base speed
-const DEF_JUMP_VELOCITY = -175.0 # unchanging base jump vel
+const DEF_JUMP_VELOCITY = -180.0 # unchanging base jump vel
 
 var speed = 80.0
-var jump_velocity = -175.0
+var jump_velocity = -180.0
 
 var too_heavy = false
 var dead = false
