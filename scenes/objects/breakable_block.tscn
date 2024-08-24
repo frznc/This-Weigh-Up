@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnpgc8mvt70i3"]
+[gd_scene load_steps=15 format=3 uid="uid://bnpgc8mvt70i3"]
 
 [ext_resource type="Script" path="res://scripts/breakable_block.gd" id="1_qpcdo"]
 [ext_resource type="Texture2D" uid="uid://bbkeadqb4hrch" path="res://textures/breakable.png" id="1_uggnc"]
@@ -17,6 +17,14 @@ region = Rect2(8, 0, 16, 8)
 atlas = ExtResource("1_uggnc")
 region = Rect2(24, 0, 24, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f282"]
+atlas = ExtResource("1_uggnc")
+region = Rect2(48, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjkp3"]
+atlas = ExtResource("1_uggnc")
+region = Rect2(80, 0, 40, 8)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_20ba5"]
 animations = [{
 "frames": [{
@@ -28,6 +36,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3wpy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f282")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjkp3")
 }],
 "loop": true,
 "name": &"default",
@@ -38,7 +52,7 @@ animations = [{
 size = Vector2(24, 8.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3glip"]
-size = Vector2(16, 2)
+size = Vector2(15.4, 0.2)
 
 [sub_resource type="Curve" id="Curve_eavge"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.904494, 0), -0.0489008, 0.0, 0, 0]
@@ -81,7 +95,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(0, -4.5)
+position = Vector2(0, -4.75)
 shape = SubResource("RectangleShape2D_3glip")
 
 [node name="Reset" type="Timer" parent="."]

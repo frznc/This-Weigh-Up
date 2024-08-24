@@ -30,14 +30,15 @@ animations = [{
 size = Vector2(10, 10)
 
 [node name="Saw" type="Node2D"]
-z_index = -5
+z_index = -1
 script = ExtResource("1_r34ar")
 
 [node name="overlay" type="Sprite2D" parent="."]
-z_index = 1
+z_index = -1
 texture = ExtResource("2_p1gep")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -2
 sprite_frames = SubResource("SpriteFrames_phv66")
 
 [node name="Area2D" type="Area2D" parent="."]

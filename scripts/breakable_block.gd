@@ -1,7 +1,7 @@
 @tool
 extends Node2D
 
-@export_range(1, 3) var size : int = 1
+@export_range(1, 5) var size : int = 1
 @export_range(0, 19) var weight_limit : int = 0
 
 @onready var block_hitbox : StaticBody2D = $Area2D
@@ -25,12 +25,12 @@ func _ready() -> void:
 	# Change size
 	sprite.frame = size - 1
 	block_shape.extents = Vector2(0, 4.25)
-	break_shape.extents = Vector2(0, 1)
+	break_shape.extents = Vector2(0, 0.1)
 	break_particles.emission_rect_extents = Vector2(0, 4)
 	var size_loop = size
 	while size_loop > 0:
 		block_shape.extents += Vector2(4, 0)
-		break_shape.extents += Vector2(5, 0)
+		break_shape.extents += Vector2(3.9, 0)
 		break_particles.emission_rect_extents += Vector2(4, 0)
 		size_loop -= 1
 	break_shape.extents += Vector2(-4, 0)
@@ -68,7 +68,7 @@ func switch_state():
 		break_particles.emitting = true
 		reset_timer.start()
 		$break.play()
-		player.jump_cooldown(0.1)
+		player.jump_cooldown(0.2)
 	
 	# OFF -> ON
 	else:

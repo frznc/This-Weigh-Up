@@ -13,6 +13,7 @@
 [node name="Level" type="Node2D"]
 
 [node name="LEVEL_OPTIONS" parent="." instance=ExtResource("1_o233w")]
+level_title = "Collection"
 
 [node name="player" parent="." instance=ExtResource("1_5ktel")]
 position = Vector2(40, -57)

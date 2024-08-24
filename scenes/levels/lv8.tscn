@@ -36,6 +36,22 @@ next_level = ExtResource("5_ufhwo")
 position = Vector2(52.1577, 28.4219)
 weight_value = -8
 
+[node name="weight7" parent="." instance=ExtResource("6_aann7")]
+position = Vector2(52, 20)
+weight_value = -8
+
+[node name="weight8" parent="." instance=ExtResource("6_aann7")]
+position = Vector2(52, 11)
+weight_value = -8
+
+[node name="weight9" parent="." instance=ExtResource("6_aann7")]
+position = Vector2(52, 2)
+weight_value = -8
+
+[node name="weight10" parent="." instance=ExtResource("6_aann7")]
+position = Vector2(52, -7)
+weight_value = -8
+
 [node name="Confine" parent="." instance=ExtResource("7_vueym")]
 position = Vector2(292, 52)
 

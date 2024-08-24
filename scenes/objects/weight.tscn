@@ -5,7 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://chthrt50ci2b0" path="res://textures/weight_spriteframes.tres" id="2_n5lvn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j480"]
-size = Vector2(12, 12.8)
+size = Vector2(13, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rerl6"]
 size = Vector2(8, 8)
@@ -33,7 +33,7 @@ sprite_frames = ExtResource("2_n5lvn")
 collision_mask = 3
 
 [node name="pickup area" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.38419e-07, -2.4)
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_8j480")
 
 [node name="collision" type="CollisionShape2D" parent="."]

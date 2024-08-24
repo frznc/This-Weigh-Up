@@ -5,6 +5,7 @@ const DEF_JUMP_VELOCITY = -180.0 # unchanging base jump vel
 
 var speed = 80.0
 var jump_velocity = -180.0
+var gravity = 980
 
 var too_heavy = false
 var dead = false
@@ -14,7 +15,9 @@ var jumping = false
 var coyote_time = 0.06
 var jump_available = true
 var crouching = false
+
 var jump_enabled = true
+var pickup_enabled = true
 
 var enable_physics = true
 
@@ -85,13 +88,14 @@ func _physics_process(delta: float) -> void:
 				closest_weight = weight
 
 		## Pickup weights
-		if (Input.is_action_just_pressed("pickup")) and Global.nearby_weights != [] and !dead and !too_heavy and !jumping:
+		if (Input.is_action_just_pressed("pickup")) and Global.nearby_weights != [] and !dead and !too_heavy and pickup_enabled:
 			Global.held_weights.push_back(closest_weight.weight_value) # Add weight to global array
 			update_weight() # update the player's weight value
 			add_to_weightstack(closest_weight.weight_value) # Add to the 'weight stack'
 			pickup_sound.pitch_scale = 0.5 + (Global.held_weights.size() * 0.02)
 			pickup_sound.play()
 			closest_weight.queue_free()
+			jump_cooldown(0.1)
 			pass
 		
 		## Drop weights
@@ -155,7 +159,13 @@ func run_physics(delta):
 	if not is_on_floor():
 		if jump_available:
 			get_tree().create_timer(coyote_time).timeout.connect(coyote_timeout)
-		velocity += get_gravity() * delta
+		if Global.weight >= 0:
+			velocity.y += (gravity + (Global.weight)) * delta
+		if Global.weight < 0: # Negative weight affects gravity more
+			if (gravity + (Global.weight * 24)) > 0:
+				velocity.y += (gravity + (Global.weight * 24)) * delta
+			else:
+				velocity.y += (5 * delta)
 	else:
 		jump_available = true
 		jumping = false
@@ -167,6 +177,7 @@ func run_movement(delta):
 		jump_available = false
 		velocity.y = jump_velocity
 		jumping = true
+		pickup_cooldown(0.1)
 	# Movement
 	var direction := Input.get_axis("left", "right")
 	if direction: velocity.x = direction * speed
@@ -184,8 +195,12 @@ func update_weight(): # Update current player weight based on the 'inventory'
 	speed = DEF_SPEED
 	for x : int in Global.held_weights:
 		Global.weight += x
-	jump_velocity += (Global.weight * (weight_mult / 1.5))
-	speed -= (Global.weight * weight_mult)
+	if Global.weight >= 0:
+		speed -= (Global.weight * weight_mult)
+		jump_velocity += (Global.weight * (weight_mult / 1.5))
+	if Global.weight < 0: # Negative weight affects speed and jh less
+		speed -= (Global.weight * weight_mult / 4)
+		jump_velocity += (Global.weight * (weight_mult / 3))
 	
 	if Global.weight > 15:
 		particle_sweat.amount = 4
@@ -303,8 +318,16 @@ func jump_cooldown(time):
 	$jumpcooldown.wait_time = time
 	$jumpcooldown.start()
 	jump_enabled = false
+	velocity.y = 0
 func _on_jumpcooldown_timeout() -> void:
 	jump_enabled = true
+	
+func pickup_cooldown(time):
+	$pickupcooldown.wait_time = time
+	$pickupcooldown.start()
+	pickup_enabled = false
+func _on_pickupcooldown_timeout() -> void:
+	pickup_enabled = true
 
 # Keep list of weights below the player (Used for crouching to move down)
 func _on_floorchecker_body_entered(body: Node2D) -> void:
