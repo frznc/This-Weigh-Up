@@ -14,6 +14,7 @@ var jumping = false
 var coyote_time = 0.06
 var jump_available = true
 var crouching = false
+var jump_enabled = true
 
 var enable_physics = true
 
@@ -60,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	if spawned == true: # Everything else goes down here
 		if enable_physics:run_physics(delta)
 		else: velocity.x = 0;velocity.y = 0
-		if Global.can_move: run_movement(delta)
+		if Global.can_move && !dead: run_movement(delta)
 		else: velocity.x = 0;
 
 		# Orient player
@@ -84,7 +85,7 @@ func _physics_process(delta: float) -> void:
 				closest_weight = weight
 
 		## Pickup weights
-		if (Input.is_action_just_pressed("pickup")) and Global.nearby_weights != [] and !dead and !too_heavy:
+		if (Input.is_action_just_pressed("pickup")) and Global.nearby_weights != [] and !dead and !too_heavy and !jumping:
 			Global.held_weights.push_back(closest_weight.weight_value) # Add weight to global array
 			update_weight() # update the player's weight value
 			add_to_weightstack(closest_weight.weight_value) # Add to the 'weight stack'
@@ -162,7 +163,7 @@ func run_physics(delta):
 
 func run_movement(delta):
 	# Jumping
-	if Input.is_action_pressed("jump") and jump_available && !crouching: 
+	if Input.is_action_pressed("jump") and jump_available && !Input.is_action_pressed("down") && jump_enabled: 
 		jump_available = false
 		velocity.y = jump_velocity
 		jumping = true
@@ -297,6 +298,13 @@ func debug(): # Debug
 	$"camera/CanvasLayer/Control/VBoxContainer/jump vel".text = str("jump vel: ", jump_velocity)
 	$camera/CanvasLayer/Control/VBoxContainer/speed.text = str("speed: ", speed)
 	$camera/CanvasLayer/Control/VBoxContainer/weight.text = str("weight: ", Global.weight," lb")
+
+func jump_cooldown(time):
+	$jumpcooldown.wait_time = time
+	$jumpcooldown.start()
+	jump_enabled = false
+func _on_jumpcooldown_timeout() -> void:
+	jump_enabled = true
 
 # Keep list of weights below the player (Used for crouching to move down)
 func _on_floorchecker_body_entered(body: Node2D) -> void:

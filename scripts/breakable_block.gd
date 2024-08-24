@@ -14,6 +14,8 @@ extends Node2D
 @onready var limit_label : Label = $Label
 @onready var break_particles : CPUParticles2D = $"Break Particles"
 
+@onready var player = get_tree().current_scene.get_node("player")
+
 var player_inside = false
 
 # Called when the node enters the scene tree for the first time.
@@ -28,7 +30,7 @@ func _ready() -> void:
 	var size_loop = size
 	while size_loop > 0:
 		block_shape.extents += Vector2(4, 0)
-		break_shape.extents += Vector2(4, 0)
+		break_shape.extents += Vector2(5, 0)
 		break_particles.emission_rect_extents += Vector2(4, 0)
 		size_loop -= 1
 	break_shape.extents += Vector2(-4, 0)
@@ -66,6 +68,7 @@ func switch_state():
 		break_particles.emitting = true
 		reset_timer.start()
 		$break.play()
+		player.jump_cooldown(0.1)
 	
 	# OFF -> ON
 	else:

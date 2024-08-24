@@ -30,6 +30,7 @@ animations = [{
 size = Vector2(10, 10)
 
 [node name="Saw" type="Node2D"]
+z_index = -5
 script = ExtResource("1_r34ar")
 
 [node name="overlay" type="Sprite2D" parent="."]
