@@ -13,55 +13,56 @@
 [node name="L2" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_rtekc")]
-position = Vector2(-32, -23)
+position = Vector2(248, -23)
 
 [node name="Endpoint" parent="." instance=ExtResource("2_xkqlx")]
-position = Vector2(-76, -4)
+position = Vector2(204, -4)
 
 [node name="tilemap1" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AADy/wAAAAAAAAAAAADz/wAAAAABAAAAAAD0/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAADAAAAAADw/wAAAAAAAAAAAADu/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD+/wAAAAAAAAAAAADv/wAAAAABAAAAAAD3/wAAAAABAAAAAAD7/wAAAAABAAAAAADx/wAAAAADAAAAAAD5/wAAAAADAAAAAAD9/wAAAAADAAAAAADq/wEAAAAAAAAAAADp/wEAAAAAAAAAAADo/wEAAAAAAAAAAADn/wEAAAAAAAAAAADm/wEAAAAAAAAAAADl/wEAAAAAAAAAAADk/wEAAAAAAAAAAADu/wEAAAAAAAAAAADt/wEAAAAAAAAAAADs/wEAAAAAAAAAAADr/wEAAAAAAAAAAADj/wEAAAAAAAAAAADi/wEAAAAAAAAAAADg/wAAAAACAAAAAADs/wAAAAACAAAAAADp/wAAAAACAAAAAADl/wAAAAACAAAAAADh/wEAAAAAAAAAAADg/wEAAAAAAAAAAADf/wAAAAAAAAAAAADf/wEAAAAAAAAAAADe/wEAAAAAAAAAAADd/wEAAAAAAAAAAADe/wAAAAAAAAAAAADd/wAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAA=")
+position = Vector2(280, 0)
+tile_map_data = PackedByteArray("AAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAIAAAAAAAAAAAAAADd/wAAAAAAAAAAAADd/wEAAAAAAAAAAADe/wAAAAAAAAAAAADe/wEAAAAAAAAAAADf/wAAAAAAAAAAAADf/wEAAAAAAAAAAADg/wAAAAACAAAAAADg/wEAAAAAAAAAAADh/wEAAAAAAAAAAADi/wEAAAAAAAAAAADj/wEAAAAAAAAAAADk/wEAAAAAAAAAAADl/wAAAAACAAAAAADl/wEAAAAAAAAAAADm/wEAAAAAAAAAAADn/wEAAAAAAAAAAADo/wEAAAAAAAAAAADp/wAAAAACAAAAAADp/wEAAAAAAAAAAADq/wEAAAAAAAAAAADr/wEAAAAAAAAAAADs/wAAAAACAAAAAADs/wEAAAAAAAAAAADt/wEAAAAAAAAAAADu/wAAAAAAAAAAAADu/wEAAAAAAAAAAADv/wAAAAABAAAAAADw/wAAAAAAAAAAAADx/wAAAAADAAAAAADy/wAAAAAAAAAAAADz/wAAAAABAAAAAAD0/wAAAAAAAAAAAAD1/wAAAAADAAAAAAD2/wAAAAAAAAAAAAD3/wAAAAABAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAADAAAAAAD6/wAAAAAAAAAAAAD7/wAAAAABAAAAAAD8/wAAAAAAAAAAAAD9/wAAAAADAAAAAAD+/wAAAAAAAAAAAAAHAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAA=")
 tile_set = ExtResource("3_pfoc3")
 
 [node name="Spike" parent="." instance=ExtResource("4_p7iht")]
-position = Vector2(76, -4)
+position = Vector2(356, -4)
 
 [node name="Saw" parent="." instance=ExtResource("5_f5sku")]
-position = Vector2(-62, -65)
+position = Vector2(218, -65)
 
 [node name="Breakable Block" parent="." instance=ExtResource("6_7ihag")]
-position = Vector2(27, -53)
+position = Vector2(307, -53)
 
 [node name="Stand Scale" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("7_1dtwd")]
 z_index = 100
 z_as_relative = false
-position = Vector2(-48, -16)
+position = Vector2(232, -16)
 endpoint = NodePath("../Endpoint")
 
 [node name="Platform Scale" parent="." node_paths=PackedStringArray("compare_scale") instance=ExtResource("8_yqfsy")]
-position = Vector2(4, 4)
+position = Vector2(284, 4)
 compare_scale = NodePath("../Platform Scale2")
 max = 5
 min = -5
 
 [node name="Platform Scale2" parent="." node_paths=PackedStringArray("compare_scale") instance=ExtResource("8_yqfsy")]
-position = Vector2(44, 4)
+position = Vector2(324, 4)
 compare_scale = NodePath("../Platform Scale")
 max = 3
 min = -5
 
 [node name="weight2" parent="." instance=ExtResource("9_lf0sf")]
-position = Vector2(20, -4)
+position = Vector2(300, -4)
 weight_value = 5
 
 [node name="weight3" parent="." instance=ExtResource("9_lf0sf")]
-position = Vector2(28, -4)
+position = Vector2(308, -4)
 weight_value = 5
 
 [node name="weight4" parent="." instance=ExtResource("9_lf0sf")]
-position = Vector2(20, -12)
+position = Vector2(300, -12)
 weight_value = 5
 
 [node name="weight5" parent="." instance=ExtResource("9_lf0sf")]
-position = Vector2(28, -12)
+position = Vector2(308, -12)
 weight_value = 5

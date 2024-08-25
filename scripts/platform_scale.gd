@@ -2,8 +2,8 @@
 extends Node2D
 
 @export var compare_scale : Node2D
-@export_range(0, 30) var max : int
-@export_range(-30, 0) var min : int
+@export_range(0, 30, 0.99) var max : int
+@export_range(-30, 0, 0.99) var min : int
 
 @onready var label = $Sprite2D/Label
 @onready var max_spr = $"Max Point"

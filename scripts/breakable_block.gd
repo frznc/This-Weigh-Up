@@ -1,8 +1,8 @@
 @tool
 extends Node2D
 
-@export_range(1, 5) var size : int = 1
-@export_range(0, 19) var weight_limit : int = 0
+@export_range(1, 5, 0.99) var size : int = 1
+@export_range(0, 20, 0.99) var weight_limit : int = 0
 
 @onready var block_hitbox : StaticBody2D = $Area2D
 @onready var block_shape : RectangleShape2D = $Area2D/CollisionShape2D.shape

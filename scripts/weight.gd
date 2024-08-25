@@ -5,7 +5,7 @@ var test = false
 var sitting_on = ""
 var collidable = true
 
-@export_range(-9,9) var weight_value : int = 0 
+@export_range(-9, 9, 0.99) var weight_value : int = 0 
 
 @onready var player = get_tree().current_scene.get_node("player")
 @onready var selected = $selected
