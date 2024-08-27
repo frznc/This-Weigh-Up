@@ -5,11 +5,11 @@ var musicplaying = false
 
 func playmusic():
 	musicplaying = true
-	$"/root/Music".play()
+	#$"/root/Music".play()
 
 func stopmusic():
 	musicplaying = false
-	$"/root/Music".stop()
+	#$"/root/Music".stop()
 
 
 func _on_finished() -> void:

@@ -4,3 +4,4 @@ extends Button
 
 func _on_pressed() -> void:
 	main.level_change(name)
+	

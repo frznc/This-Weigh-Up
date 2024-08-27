@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://sn5tb4jk80ee" path="res://scenes/objects/weight.tscn" id="5_clm86"]
 [ext_resource type="PackedScene" uid="uid://c1loorygq2ep6" path="res://scenes/levels/lv2.tscn" id="5_g2pbi"]
 [ext_resource type="PackedScene" uid="uid://35n3wcfappjx" path="res://scenes/objects/confine.tscn" id="7_67lp0"]
-[ext_resource type="PackedScene" uid="uid://b32acehua0eea" path="res://scenes/LEVEL_OPTIONS.tscn" id="8_x3pdj"]
+[ext_resource type="PackedScene" uid="uid://b32acehua0eea" path="res://scenes/objects/LEVEL_OPTIONS.tscn" id="8_x3pdj"]
 
 [node name="Level" type="Node2D"]
 
