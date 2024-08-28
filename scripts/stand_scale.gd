@@ -12,6 +12,7 @@ extends Node2D
 @onready var blip = $blip
 @onready var yay = $complete
 @onready var error = $error
+@onready var arrow = $Arrow
 
 var error_told = false
 var complete = false
@@ -25,6 +26,9 @@ var calculating = false
 func _ready() -> void:
 	# Set text to weight needed
 	label.text = str(weight_needed)
+	
+	# Set arrow position to required weight
+	arrow.position.y -= weight_needed
 	
 	# Create pips
 	for x in 20:

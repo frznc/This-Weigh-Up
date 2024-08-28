@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ul5vt7t6vjq5"]
+[gd_scene load_steps=10 format=3 uid="uid://ul5vt7t6vjq5"]
 
 [ext_resource type="Script" path="res://scripts/stand_scale.gd" id="1_2mq4k"]
 [ext_resource type="Texture2D" uid="uid://clqpqphwwst24" path="res://textures/standscale.png" id="1_4y25a"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://vbxummvqusin" path="res://sounds/blip.wav" id="4_nuuh5"]
 [ext_resource type="AudioStream" uid="uid://8p5s6gvyc8ba" path="res://sounds/complete.wav" id="5_hohyw"]
 [ext_resource type="AudioStream" uid="uid://m4ud8mwl8lyq" path="res://sounds/too_much.wav" id="6_v3f8q"]
+[ext_resource type="Texture2D" uid="uid://cnboeivb7s50p" path="res://textures/scale_arrow.png" id="7_bqugb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7u85j"]
 size = Vector2(9, 4)
@@ -49,7 +50,7 @@ position = Vector2(-0.5, 10)
 shape = SubResource("RectangleShape2D_d41ci")
 
 [node name="Pip Tick" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
 
 [node name="blip" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_nuuh5")
@@ -62,6 +63,11 @@ pitch_scale = 0.6
 
 [node name="error" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_v3f8q")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-12, 8)
+texture = ExtResource("7_bqugb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
